@@ -40,57 +40,57 @@ module.exports = () => {
 			],
 
 			'watch':	[ 
-							'app/src/'
+							'site/src/'
 			],
 
 			'src':		{	
-							'base':		'app/src/',
+							'base':		'site/src/',
 
-							'less': 	'app/src/less/_base_structure.less',
+							'less': 	'site/src/less/project/settings/structure.less',
 							
-							'js': 		'app/src/js/**/*.js',
+							'js': 		'site/src/js/base.js'
                                         
-                            'react':    'app/src/app.jsx'
+                            // 'react':    'site/src/app.jsx'
 			},
 
 			'dist': 	{				
 							'base': 	{ 
-											'dir': 'app/dist',		
+											'dir': 'site/dist',		
 											'options': 	{ 
 															'dirStructure': false
 														}		
 										},
 
 							'styles': 	{ 
-											'dir': 'app/dist',		
+											'dir': 'site/dist',		
 											'options': 	{ 
 															'dirStructure': false
 														}		
 										},
 
 							'scripts': 	{ 
-											'dir': 'app/dist',		
+											'dir': 'site/dist',		
 											'options': 	{ 
 															'dirStructure': false
 														}		
 										},
 
 							'react': { 
-											'dir': 'app/dist',		
+											'dir': 'site/dist',		
 											'options': 	{ 
 															'dirStructure': false
 														}		
 										},
 
 							'json': 	{ 
-											'dir': 'app/dist/json',
+											'dir': 'site/dist/json',
 											'options': 	{ 
 															'dirStructure': false
 														}		
 										},
 
 							'fonts': 	{ 
-											'dir': 'app/dist/fonts',
+											'dir': 'site/dist/fonts',
 											'extensions': fontExtensions,	
 											'options': 	{ 
 															'dirStructure': false
@@ -98,7 +98,7 @@ module.exports = () => {
 										},
 
 							'images': 	{ 
-											'dir': 'app/dist/img',
+											'dir': 'site/dist/img',
 											'options': 	{ 
 															'dirStructure': false,
 															'imagesSizing': imagesSizing,
@@ -107,7 +107,7 @@ module.exports = () => {
 										},
 
 							'pdf': 		{ 
-											'dir': 'app/dist',		
+											'dir': 'site/dist',		
 											'options': 	{ 
 															'dirStructure': true
 														}		

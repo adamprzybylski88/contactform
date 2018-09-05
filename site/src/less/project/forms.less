@@ -1,0 +1,27 @@
+form {
+    .padd-bottom(30);
+    
+    input[type*='email'],
+    input[type*='tel'],
+    input[type*='text'],
+    select,
+    textarea {
+        width: 100%;
+        .font-size(20);
+        .marg-auto();
+        .padd(25,25,5);
+        border-bottom: 1px solid @gray4a;
+        .placeholder-color(@gray80);
+        
+        &:focus {
+            border-color: @ba-light-green;
+            color: @black;
+            .placeholder-color(@black);
+        }
+
+    }
+
+    textarea {
+        height: 100%;
+    }
+}

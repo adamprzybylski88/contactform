@@ -1,0 +1,35 @@
+.btn {
+    color: @black;
+    background-color: @ba-light-green;
+    border: 2px solid @ba-light-green;
+
+    .min-width(220);
+    .uppercase;
+    .transition(all .2s);
+
+    small {
+        display: block;
+    }
+
+    &:hover {
+        color: @black;
+        background-color: @white;
+    }
+
+    @media screen and (max-width: (at(@devices, sm) * 1px)) {
+        min-width: 0;
+    }
+}
+
+.make-buttons(@btn-colors);
+
+.content .btns,
+.btns {
+    .btn {
+       .marg-right(20);
+
+       &:last-child {
+           margin-right: auto;
+       }
+    }
+}

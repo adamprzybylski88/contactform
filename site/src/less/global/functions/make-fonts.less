@@ -1,0 +1,21 @@
+.font-face(@name, @font_weights_arr) {
+	@fl: length(@font_weights_arr);
+
+	.fonts-loop(@i) when (@i > 0) {
+		@weight: extract(@font_weights_arr, @i);
+
+		@font-face {
+			font-family: ~"@{name}@{weight}";
+			src: ~"url(./fonts/@{name}@{weight}.eot)";
+			src: ~"url(./fonts/@{name}@{weight}.eot?#iefix) format('embedded-opentype'), url('./fonts/@{name}@{weight}.ttf') format('truetype'), url('./fonts/@{name}@{weight}.woff') format('woff'), url('./fonts/@{name}@{weight}.woff2') format('woff2')";
+			// src: ~"url(./fonts/@{name}@{weight}.eot?#iefix) format('embedded-opentype'), url('./fonts/@{name}@{weight}.ttf') format('truetype'), url('./fonts/@{name}@{weight}.woff') format('woff'), url('./fonts/@{name}@{weight}.woff2') format('woff2'),  url('./fonts/@{name}@{weight}.svg') format('svg')";
+			font-weight: normal;
+			font-style: normal;
+		}
+		
+		.fonts-loop(@i - 1);
+	}
+	
+	.fonts-loop(0) {}
+	.fonts-loop(@fl);
+}

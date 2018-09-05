@@ -1,0 +1,123 @@
+// --- COLOR PROFILES MIXINS --- //
+// (1) name => textColor-elementsColor (white-blue)
+// (2) text color           (3) headings color
+// (4) a color              (5) a:hover color
+// (6) li color             (7) li attr color
+// (8) cite color
+
+@colorprofiles:
+
+// default on dark bacgrounds
+white-light-green
+@white                  @white
+@ba-light-green         darken(@ba-light-green, 10%)
+@white                  @ba-light-green
+@ba-light-green
+,
+
+// default
+light-green 
+@base-p                 @base-h
+@base-a                 darken(@base-a, 10%)
+@base-li                @base-li-attr
+@ba-light-green
+,
+
+white-green
+@white                  @white
+@ba-green               darken(@ba-green, 10%)
+@white                  @ba-green
+@ba-green
+,
+
+green 
+@base-p                 @base-h
+@ba-green               darken(@ba-green, 10%)
+@base-li                @ba-green
+@ba-green
+,
+
+// for light-green background
+dark-green 
+@ba-dark-green          @base-h
+@ba-gray                lighten(@black, 10%)
+@ba-dark-green          @black
+@black
+,
+
+gray
+@base-p                 @base-h
+@ba-gray                darken(@ba-gray, 10%)
+@base-p                 @ba-gray
+@ba-gray
+,
+
+black
+@black                  @base-h
+@black                  darken(@black, 10%)
+@black                  @black
+@black
+;
+
+// --- COLOR PROFILES end --- //
+
+
+// --- BACKGROUND COLORS && COLORS - for .html inline classes --- //
+@elements-colors:
+
+    light-green         @ba-light-green
+,   green               @ba-green
+,   dark-green          @ba-dark-green
+,   darkest-green       @ba-darkest-green
+
+,   pale-gray           @ba-gray-pale
+
+,   white               @white
+,   black               @black
+;
+
+
+// --- BUTTON COLORS--- //
+// (1) name             
+// (2) btn bg-color             (3) btn bg-color:hover         
+// (4) btn text-color           (5) btn text-color:hover 
+// (6) btn border-color         (7) btn border-color:hover       
+@btn-colors:
+
+    green-light         
+    @ba-light-green             @white
+    @black                      @black
+    @ba-light-green             @ba-light-green
+
+,   green               
+    @ba-green                   @black
+    @white                      @white
+    @ba-green                   @ba-green
+
+,   dark-green          
+    @ba-dark-green              @black
+    @white                      @white
+    @ba-dark-green              @ba-dark-green
+
+,   darkest-green       
+    @ba-darkest-green           @black
+    @white                      @white
+    @ba-darkest-green           @ba-darkest-green
+
+,   white-black
+    @white                      @ba-light-green
+    @black                      @black
+    @white                      @white
+;
+
+@borderColors:
+
+    green               @ba-green
+,   black               @black
+;
+
+@shadowColors:
+
+    green               @ba-green
+,   black               @black
+;

@@ -3,7 +3,6 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Contact Form</title>
 	<link rel="stylesheet" href="./dist/style.css" type="text/css" media="all">
@@ -11,13 +10,38 @@
 
 <body>
 
-	<div id="app_wrapper">
-		<div class="container">
-			<div class="turbobox td_mid td_center">
+	<div class="container">
+		<div class="turbobox td_mid td_center">
+			<div class="tx-10 tx-sm-12">
 
-				<form action="">
-					
+				<form id="contact_form" class="turbobox td_stretch" onsubmit="return false">
+
+					<div class="tx-6 tx-mob-12">
+						<!-- <label for="input_name">Imię i Nazwisko</label> -->
+						<input id="input_name" placeholder="Imię i Nazwisko" type="text" size="30" />
+			
+						<!-- <label for="input_email">Email<span>*</span></label> -->
+						<input id="input_email" placeholder="Email" type="email" />
+
+						<!-- <label for="input_phone">Telefon<span>*</span></label> -->
+						<input id="input_phone" placeholder="Numer telefonu" type="tel" />
+					</div>
+		
+					<div class="tx-6 tx-mob-12">
+						<!-- <label for="input_message">Wiadomość<span>*</span></label> -->
+						<textarea id="input_message" placeholder="Wiadomość" type="text" size="300"></textarea>
+					</div>
+
+					<div class="tx-12">
+						<input class="btn" type="submit" value="Wyślij">
+					</div>
+
 				</form>
+
+				<div class="content center">
+					<p id="success_message">Twoja wiadomość została wysłana</p>
+					<p id="err_message">Jedno bądź więcej pól zawiera błędy</p>
+				</div>
 
 			</div>
 		</div>

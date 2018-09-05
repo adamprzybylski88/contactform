@@ -539,7 +539,6 @@ const watchAssets = (dataObj) => {
 							.bundle()
 							.on('error', (error) => {
 								onErrorBabel(error)
-								console.error( error )
 
 								k++
 								transformFiles(k)
@@ -561,42 +560,6 @@ const watchAssets = (dataObj) => {
 									}, 50)
 								}
 							})
-
-						// gulp
-						// 	.src(scriptsSrc)
-						// 	.pipe(sourcemaps.init())
-						// 	.pipe(babel({
-						// 		presets: ['es2015', 'stage-0']
-						// 		// , plugins: ['transform-class-properties']
-						// 	}))
-						// 	// .pipe(plumber({
-						// 	// 	errorHandler: onError
-						// 	// }))
-						// 	.on('error', (error) => {
-						// 		onErrorBabel(error)
-
-						// 		k++
-						// 		transformFiles(k)
-						// 	})
-						// 	.pipe(uglify({
-						// 		mangle: false
-						// 	}))
-						// 	.pipe(concat('script.js'))
-						// 	.pipe(gulp.dest(dist))
-						// 	.on('end', function() {
-						
-						// 		if ( fs.existsSync(`${dist}/script.js`) ) {
-						// 			generateLog(instanceName, 'js', dist + '/' + 'script.js', dist + '/' + 'script.js', new Date() - time_now)
-
-						// 			k++
-						// 			transformFiles(k)
-						// 		} else {		
-						// 			fs.createWriteStream(`${dist}/script.js`)
-						// 			setTimeout(() => {
-						// 				transformFiles(k)
-						// 			}, 50)
-						// 		}
-						// 	})
 
 					} else {
 						// ignore rest
