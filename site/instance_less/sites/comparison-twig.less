@@ -1,0 +1,184 @@
+table.table-plans {
+	width: 100%;
+	.text-center;
+	.marg-auto(0,60);
+	.font-size(18);
+
+	tr {
+		background-color: @white;
+
+		th {
+			p {
+				.marg();
+				.padd();
+			}
+		}
+	}
+
+	thead {
+		border: solid @pp-pale-blue_border;
+		border-width: 1px 1px 0;
+
+		.tr-links,
+		.tr-logos {
+			border-width: 0;
+
+			&.tr-border {
+				border-width: 0 0 1px;
+
+				td {
+					.padd(15,5,15,5);
+				}
+			}
+		}
+
+		.tr-logos {
+			th {
+				vertical-align: middle;
+				.padd(0,4,0,4);
+
+				img {
+					display: block;
+					.marg-auto(40);
+					max-width: 80%;
+				}
+
+				&.matomo {
+					img {
+						.max-height(48);
+					}
+				}
+
+				&.piwikpro {
+					img {
+						.max-height(22);
+					}
+				}
+
+				p {
+					.font(500);
+					.font-size(20);
+					color: @pp-dark;
+				}
+				@media all and (max-width: @mob) {
+					img {
+						max-height: 12px;
+					}
+
+					p {
+						.font-size(14);
+					}
+				}
+			}
+		}
+	}
+
+	tbody {
+		tr {
+			border: solid @pp-pale-blue_border;
+			border-width: 0 1px 1px;
+
+			td,
+			th {
+				vertical-align: top;
+			}
+
+			td {
+				.padd(10,5,10,5);
+
+				&:first-child {
+					.text-left;
+					width: 31%;
+					color: @gray80;
+					padding-left: 30px;
+					@media all and (max-width: @small) {
+						padding-left: 10px;
+					}
+				}
+
+				&:last-child {
+					border-width: 0;
+				}
+
+				&.plan-cloud,
+				&.plan-community,
+				&.plan-premises {
+					background: url('@{img}/tick-none.svgz') no-repeat center;
+
+					&.active {
+						background: url('@{img}/i_blue_tick-table.svgz') no-repeat center;
+					}
+
+					&.type {
+						background: none;
+						color: @gray3;
+					}
+				}
+
+				&.plan-community {
+					width: 23%;
+				}
+
+				&.plan-cloud,
+				&.plan-premises {
+					width: 23%;
+				}
+			}
+
+			&:hover {
+				background-color: #f2f7fa;
+			}
+
+			&.tr-header {
+				background-color: @pp-wa-1;
+				border-width: 1px;
+
+				td {
+					&:first-child {
+						color: @pp-dark;
+						.font(500);
+					}
+				}
+
+				&:hover {
+					background-color: @pp-wa-1;
+				}
+			}
+
+			&.tr-space {
+				background-color: @transparent;
+				border-width: 0;
+
+				td {
+					.padd-bottom(20);
+				}
+
+				&:hover {
+					background-color: @transparent;
+				}
+			}
+
+			&.center {
+				td {
+					&:first-child {
+						.text-center;
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 480px) {
+		td {
+			.font-size(14);
+		}
+
+		a {
+			.font-size(12);
+		}
+
+		p {
+			.font-size(10) !important;
+		}
+	}
+}

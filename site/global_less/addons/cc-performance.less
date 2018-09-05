@@ -1,0 +1,57 @@
+#cc-performance {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 500;
+
+	//hide
+	// display: none;
+
+	#cc-chart {
+		position: relative;
+		height: 10px;
+		width: 300px;
+		overflow: hidden;
+
+		span {
+			position: absolute;
+			-webkit-transition: all linear 0.1s;
+			-moz-transition: all linear 0.1s;
+			-ms-transition: all linear 0.1s;
+			-o-transition: all linear 0.1s;
+			bottom: 0;
+			width: 50%;
+			left: 0;
+			height: 100%;
+			background-color: rgba(0,0,0,.5);
+
+			&.red {
+				background-color: #d82c31;
+			}
+
+			&.yellow {
+				background-color: #f88312;
+			}
+
+			&.green {
+				background-color: #7cc64e;
+			}
+		}
+	}
+
+	p {
+		position: relative;
+		display: inline-block;
+		width: 50%;
+		margin: 0;
+		color: rgba(255,255,255,.5);
+		font-size: 12px;
+		padding: 10px;
+		background-color: rgba(0,0,0,.5);
+
+		span {
+			font-size: 120%;
+			color: #fff;
+		}
+	}
+}

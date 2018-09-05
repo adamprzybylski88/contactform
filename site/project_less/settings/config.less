@@ -1,0 +1,196 @@
+@project_shortcut:						'piwikpro';
+@project_path_name:						'@{project_shortcut}';
+@img:									'/@{project_shortcut}/img';
+
+// --- SET BASE ELEMS COLORS --- //
+@base-body: 							@gray80; 							// body and <p> color
+@base-body-bg: 							@white; 							// background body
+@base-p: 								@gray80; 							// <p> color
+@base-p-light: 							@pp-metal-gray; 					// light <p> color
+@base-p-dark: 							@pp-dark; 							// dark <p> color
+@base-li: 								@pp-metal-gray; 					// <li> color
+@base-li-attr: 							@pp-wa-4; 							// <li> dot, alpha, count, roman color
+@base-a: 								@pp-wa-4; 							// <a> color
+@base-a-hover: 							darken(@pp-wa-4, 10%); 				// <a> hover color
+@base-h: 								@pp-dark-metal-gray; 				// <h1><h2><h3><h4><h5> color
+
+// @formcolors:
+// ;
+
+// --- SET BASE FONTS --- //
+@fontName: 								'museosans';
+.font-face(										
+										@fontName,
+										'100'
+										'100_italic'
+										'300'
+										'300_italic'
+										'500'
+										'500_italic'
+										'700'
+										'700_italic'
+										'900'
+										'900_italic'
+);
+
+.font(@weight) {
+	font-family: '@{fontName}@{weight}';
+};
+
+@fontSeriffName: 						'';
+.font-face(							
+										@fontSeriffName
+									,	''
+);
+
+.font-seriff(@weight) {
+	font-family: '@{fontSeriffName}@{weight}';
+};
+
+@font-name-base: 						@fontName;
+@font-weight-base:						300;
+@font-weight-strong:					700;
+@font-weight-heading:					300;
+@font-weight-heading-strong:			500;
+@font-weight-button:					500;
+@font-weight-button-small-tag:			300;
+
+
+// --- SET FONT BASE SIZES --- //
+@font-size-base: 						18;
+@line-height-base: 						10;
+
+@button-font-size:						18;
+@button-font-size-small-tag:			.8;		// em
+@button-sm-font-size:					.8;		// em
+@button-lg-font-size:					1.2;	// em
+@button-xlg-font-size:					1.4;	// em
+
+@button-padding-vertical:				1;		// em
+@button-padding-horizontal:				2;		// em
+
+@headings:
+										h1	48
+									,	h2	40
+									,	h3	28
+									,	h4	24
+									,	h5 	22
+									,	h6	20
+									;
+									
+@headings-line-height:					@line-height-base / 2;
+
+
+// --- SET MEDIA SCALLING FONTS --- //
+@heading-ratio-lg:						0.9;
+@font-size-ratio-lg: 					0.9;
+
+@heading-ratio-sm:						0.75;
+@font-size-ratio-sm: 					0.75;
+
+@global-scalable-tresholds:
+										(at(@devices, lg) * 1px)
+										(at(@devices, mob) * 1px)
+										@font-size-base * @font-size-ratio-lg // add only ratio
+
+									,	(at(@devices, sm) * 1px)
+										(at(@devices, sm) * 1px)
+										@font-size-base * @font-size-ratio-sm // add only ratio
+									;
+
+@headings-scalable-tresholds:
+										(at(@devices, lg) * 1px)
+										(at(@devices, mob) * 1px)
+										@heading-ratio-lg
+										@headings-line-height
+									
+									,	(at(@devices, sm) * 1px) 
+										(at(@devices, sm) * 1px) 
+										@heading-ratio-sm 
+										@headings-line-height
+									;
+
+
+// --- GLOBAL MARGINS --- //
+@marg-bottom-global-elems_lg:			40;									// table, 
+@marg-bottom-global-elems_md:			30;									// .box
+@marg-bottom-global-elems_sm:			20; 								// img, a.btn, a.link
+
+@marg-bottom-global-text-elems:			1.2; 								// em // p, blockquote, address
+@marg-bottom-global-headings:			.5; 								// em // h1, h2, h3, h4, h5, h6
+
+
+// --- GLOBAL PADDINGS --- //
+@global-container-padd: 				30;									// .container side padds
+@padd-bottom-global-content: 			30; 								// .content bottom padd
+
+@box-padd-top:							45;
+@box-padd-bottom:						25;
+@box-padd-horizontal:					60;
+
+@cta-padd-top:							30;
+@cta-padd-bottom:						20;
+@cta-padd-horizontal:					15;
+
+// --- MAX WIDTHS --- //
+@overframe-image-max-width:				1200;
+
+
+// --- CONTENT / ARTICLE ELEMENTS SIZES (em) --- //
+@li-attr-size:							.4;									// dot size
+@li-attr-space-right:					1.6;								// space between dot and text 
+
+@li-attr-tick-size:						.8;									// tick size
+@li-attr-tick-space-right:				.8;									// space between tick and text
+
+@ul-ol-bottom-space:					.9;
+@li-bottom-space:						.9;
+
+@headings-top-space:					.7;									// h top padding (article)
+@paragraph-lead-size:					1.2;								// p.lead
+@paragraph-subtitle-size:				1.2;								// p.subtitle
+@paragraph-small-size:					.75;								// p.small
+@small-tag-size:						.7;									// small
+
+@pre-inline-padd-vertical:				.1;
+@pre-inline-padd-horizontal:			.1;
+@pre-margin-bottom:						.1;
+@pre-font-size:							.1;
+
+@code-padd-vertical:					.2;
+@code-padd-horizontal:					.4;
+@code-font-size:						.8;	
+@code-border-radius:					.4;
+
+@table-tr-font-size:					.9;									// (article)
+@table-tr-td-padd-vertical:				.5;									// (article)
+@table-tr-td-padd-horizontal:			.6;									// (article)
+@table-border-width:					1px;								// (article)
+
+@alignment-spacings:					1.2;								// .alignleft .alignright .aligncenter margins
+
+
+// --- CONTENT / ARTICLE ELEMENTS SIZES (rem) --- //
+@figure-spacings:						20;									// figure padd top and bottom
+@blockquote-spacings:					40;									// blockquote marg top and bottom
+@content-images-side-spacing:			30;									// .icons .images .logos => img side margin
+
+@content-bottom-spacing:				30;									// padd bottom
+@article-bottom-spacing:				60;									// padd bottom
+
+
+// --- LOGOS SIZING (em) --- //
+@logos_size:							2.7; //em
+
+// --- ICON SIZING (em) --- //
+@icons_size:							4.5; //em
+
+
+// --- SET MEDIA PX SIZES --- //
+@small: 								(at(@devices, sm) * 1px);
+@mob: 									(at(@devices, mob) * 1px);
+@medium: 								(at(@devices, md) * 1px);
+@large: 								(at(@devices, lg) * 1px);
+@hd: 									(at(@devices, hd) * 1px);
+@xlarge: 								(at(@devices, xlg) * 1px);
+@fhd: 									(at(@devices, fhd) * 1px);

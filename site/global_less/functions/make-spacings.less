@@ -1,0 +1,143 @@
+@padding_styles:
+                                padding-top pt
+                                , padding-right pr
+                                , padding-bottom pb
+                                , padding-left pl
+                                ;
+@margin_styles:
+                                margin-top mt
+                                , margin-bottom mb
+                                , margin-right mr
+                                , margin-left ml
+                                ;
+
+@padding_styles_percent:
+                                padding-top ptp
+                                , padding-bottom pbp
+                                ;
+
+@margin_styles_percent:
+                                margin-top mtp
+                                , margin-bottom mbp
+                                ;
+                                
+.make-loop-spacings-base(@styles, @val, @condition, @device_short, @units, @units_divident) {
+    @s_len: length(@styles);
+    @v_len: length(@val);
+
+    .naming-loop(@len, @i:1) when (@i =< @len) {
+        @each_style: extract(@styles, @i);
+        @name: extract(@each_style, 1);
+        @short: extract(@each_style, 2);
+
+        .styles-loop(@inlen, @a:1) when (@a =< @inlen) {
+            @each_val: extract(@val, @a);
+            @each_val-rem: round(@each_val / @units_divident, 3);
+
+            // classes
+            .@{short}@{each_val} 
+            when (@device_short = null)
+            and (@condition = '+')
+            {
+                @{name}: ~'@{each_val-rem}@{units}' !important;
+            }
+
+            .@{short}-@{each_val} 
+            when (@device_short = null)
+            and (@condition = '-')
+            {
+                @{name}: ~'-@{each_val-rem}@{units}' !important;
+            }
+
+            // media classes
+            .@{short}-@{device_short}@{each_val} 
+            when not (@device_short = null)
+            and (@condition = '+')
+            {
+                @{name}: ~'@{each_val-rem}@{units}' !important;
+            }
+
+            .@{short}-@{device_short}-@{each_val} 
+            when not (@device_short = null)
+            and (@condition = '-')
+            {
+                @{name}: ~'-@{each_val-rem}@{units}' !important;
+            }
+
+            .styles-loop(@inlen, (@a + 1));
+        }
+        .styles-loop(@v_len);
+
+
+        // auto margin left and right
+        .@{short}-auto
+        when (@device_short = null) 
+        and (@short = mr)
+        and (@condition = '-')
+        , (@device_short = null)
+        and (@short = ml)
+        and (@condition = '-')
+        {
+            @{name}: auto !important;
+        }
+
+        // media auto margin left and right
+        .@{short}-@{device_short}-auto
+        when not (@device_short = null) 
+        and (@short = mr)
+        and (@condition = '-')
+        , not (@device_short = null)
+        and (@short = ml)
+        and (@condition = '-')
+        {
+            @{name}: auto !important;
+        }
+
+        // padding and margin zero
+        .@{short}0
+        when (@device_short = null)
+        and (@condition = '+')
+        {
+            @{name}: 0 !important;
+        }
+
+        // media padding and margin zero
+        .@{short}-@{device_short}0
+        when not (@device_short = null)
+        and (@condition = '+')
+        {
+            @{name}: 0 !important;
+        }
+        
+
+        .naming-loop(@len, (@i + 1));
+    }
+    .naming-loop(@s_len);
+}
+
+.make-loop-spacings(@dev) {
+
+    .make-loop-spacings-base(@padding_styles, @padding_spacings, '+', null, 'rem', @font-size-base);
+    .make-loop-spacings-base(@margin_styles, @margin_spacings, '-', null, 'rem', @font-size-base);
+    .make-loop-spacings-base(@margin_styles, @margin_spacings, '+', null, 'rem', @font-size-base);
+    
+    .make-loop-spacings-base(@padding_styles_percent, @padding_spacings_percent, '+', null, '%', 1);
+    .make-loop-spacings-base(@margin_styles_percent, @margin_spacings_percent, '-', null, '%', 1);
+
+    // make spacings for @media
+    .iter(length(@dev));
+    
+    .iter(@i) when (@i > 0) {
+        .iter(@i - 1);
+        
+        @arr_elem: extract(@dev, @i);
+        @devShort: extract(@arr_elem, 1);
+        @devSize: extract(@arr_elem, 2);
+        
+        @media screen and (max-width: ~'@{devSize}px') {
+            .make-loop-spacings-base(@padding_styles, @spacings_media, '+', @devShort, 'rem', @font-size-base);
+            .make-loop-spacings-base(@margin_styles, @spacings_media, '-', @devShort, 'rem', @font-size-base);
+            .make-loop-spacings-base(@margin_styles, @spacings_media, '+', @devShort, 'rem', @font-size-base);
+        }
+    }
+}

@@ -1,0 +1,20 @@
+// PROJECT RDY KEYFRAMES for ANIMATIONS
+.keyframes( showBox { 0% { opacity:0;.transform(scale(.9));} 100% { opacity:1;.transform(scale(1));} });
+.keyframes( showBoxOpacity { 0% { opacity:0;} 100% { opacity:1;} });
+.keyframes( errorMsg { 0% { border-color: @red; } 100% { border-color: @gray-border; } } );
+.keyframes( errorMsgHub { 0% { opacity: 1; } 75% { opacity: 1; } 100% { opacity: 0; } } );
+.keyframes( CCpopup { 0% { .transform(scale(1)); } 50% { .transform(scale(1.05)); } 100% { .transform(scale(1)); } } );
+
+.keyframes( arrowDown {
+	0% { .transform(translateY(-30px) scale(.7));opacity:.1; }
+	35% { .transform(translateY(-10px) scale(1.2));opacity:1; }
+	55% { .transform(translateY(10px) scale(1.2));opacity:6; }
+	100% { .transform(translateY(30px) scale(.9));opacity:.1; }
+});
+
+//
+//
+// ANIMATION MIXINS
+.img_showBox {
+	.animation(showBox 1 ease-in .3s);
+}

@@ -1,0 +1,25 @@
+@li-attr-circletick-size:			1.2;
+@li-attr-circletick-space-right:	.7;
+
+.tick-list-circle() {
+    .signLists();
+    @topSpace: round(-(1 - @li-attr-circletick-size) / 2, 3);
+
+    > li {
+        &:before {
+            content: '\ea04'; // cicle tick
+            font-size: ~'@{li-attr-circletick-size}em';
+            top: ~'@{topSpace}em';
+            padding-right: ~'@{li-attr-circletick-space-right}em';
+        }
+    }
+}
+
+.content,
+article {
+    &.circle-check-list{
+        > ul {
+            .tick-list-circle;
+        }
+    }
+}

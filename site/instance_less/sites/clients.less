@@ -1,0 +1,60 @@
+#main_header.single-clients {
+	h1 {
+		color: @pp-wa-2 !important;
+
+		span {
+			color: @white;
+		}
+	}
+}
+
+.clients-box {
+	position: relative;
+	.marg-auto(0,40);
+
+	.top_part {
+		position: relative;
+		overflow: hidden;
+		.height(225);
+		.padd(55,15,15,15);
+
+		span.top_bg {
+			position: absolute;
+			.left();
+			width: 100%;
+			.top();
+			height: 100%;
+			.background-size(cover);
+			background-repeat: no-repeat;
+			background-position: 50% 20%;
+			background-color: @pp-wa-5;
+			z-index: 1;
+			.transition(all .7s cubic-bezier(.24,.22,.26,.96));
+		}
+	}
+
+	.text_part {
+		.text-center;
+		.padd(45,15,25,15);
+		background-color: @pp-wa-1;
+
+		h3,
+		p {
+			.marg-bottom(15);
+		}
+	}
+
+	&:hover {
+		cursor: pointer;
+
+		.top_part {
+			span.top_bg {
+				.transform(scale(1.05));
+			}
+
+			img.top_icon {
+				.transform(scale(1.1));
+			}
+		}
+	}
+}

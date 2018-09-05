@@ -1,0 +1,21 @@
+.make-bg-colors(@color_list) {
+	@cl: length(@color_list);
+
+	.colors-loop(@i) when (@i > 0) {
+		@each_pos: extract(@color_list, @i);
+		@name: extract(@each_pos, 1); 				// color name
+		@hash: extract(@each_pos, 2); 				// background-color hash
+
+		// construction
+		.bg-color_@{name} {
+			background-color: @hash;
+
+			// .transition(background-color .4s ease-in)
+		}
+
+		.colors-loop(@i - 1);
+	}
+
+	.colors-loop(0) {}
+	.colors-loop(@cl);
+}

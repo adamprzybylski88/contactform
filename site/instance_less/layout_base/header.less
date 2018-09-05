@@ -1,0 +1,42 @@
+header#main_header {
+    position: relative;
+    .padd-bottom(80);
+    .padd-top(140);
+    overflow: hidden;
+
+    .btns_inline {
+        // display: table;
+        display: block;
+        .marg-auto();
+
+        > * {
+            // display: table-cell;
+            display: inline-block;
+            .padd(0,8,0,8);
+            // width: 50%;
+
+            .btn {
+                // &.stretch_hover {
+                    &:hover {
+                        .transform(none);
+                        .padd-left(70);
+                        .padd-right(70);
+                    }
+                // }
+            }
+            @media screen and (max-width: @medium) {
+                display: block;
+                width: 100%;
+
+                .btn {
+                    .marg-auto(0,20) !important;
+
+                    &:hover {
+                        .padd-left(35);
+                        .padd-right(35);
+                    }
+                }
+            }
+        }
+    }
+}

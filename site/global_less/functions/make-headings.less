@@ -1,0 +1,39 @@
+// --- HEADINGS SCALLING --- //
+.make-media-headings(@font-size, @tresholds) {
+	@th: length(@tresholds);
+
+	.colors-loop(@len, @i:1) when (@i =< @len) {
+		@each_th: extract(@tresholds, @i);
+
+		@width: extract(@each_th, 1);
+		@height: extract(@each_th, 2);
+		@font-size-scalled: round( @font-size * extract(@each_th, 3), 3);
+		@line-height: extract(@each_th, 4);
+
+		@media screen and (max-width: @width), screen and (max-height: @height) {
+			// .font-size(@font-size-scalled, @line-height);
+			.font-size-em(@font-size-scalled, @line-height);
+		}
+
+		.colors-loop(@len, (@i + 1));
+	}
+
+	.colors-loop(@th);
+}
+
+// --- HEADINGS --- //
+.make-headings(@headings, @headings-line-height, @tresholds) {
+	@h_len: length(@headings);
+	.colors-loop(@len, @i:1) when (@i =< @len) {
+
+		h@{i},
+		.h@{i} {
+			// .font-size(at(@headings, ~'h@{i}'), @headings-line-height);
+			.font-size-em(at(@headings, ~'h@{i}'), @headings-line-height);
+			.make-media-headings(at(@headings, ~'h@{i}'), @tresholds);
+		};
+
+		.colors-loop(@len, (@i + 1));
+	}
+	.colors-loop(@h_len);
+};

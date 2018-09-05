@@ -1,0 +1,327 @@
+body,
+html {
+	@font-size: @font-size-base;
+	font-family: '@{font-name-base}@{font-weight-base}';
+	color: @base-body;
+	font-size: ~"@{font-size}px";
+	line-height: (@font-size + @line-height-base) / @font-size;
+	background-color: @base-body-bg;
+	text-rendering: geometricprecision;
+	position: relative;
+	z-index: 1;
+
+	em {
+		font-family: ~'@{font-name-base}@{font-weight-base}_italic';
+	}
+
+	ins {
+		.underline;
+	}
+
+	del {
+		.line-through;
+	}
+
+	span,
+	strong {
+		color: inherit;
+	}
+
+	span {
+		font-size: inherit;
+	}
+
+	strong {
+		font-family: '@{font-name-base}@{font-weight-strong}';
+
+		em {
+			font-family: ~'@{font-name-base}@{font-weight-strong}_italic';
+		}
+	}
+
+	em > strong {
+		font-family: ~'@{font-name-base}@{font-weight-strong}_italic';
+	}
+	
+	.make-media(@global-scalable-tresholds);
+
+	&.noscroll {
+		overflow: hidden;
+	}
+
+	break {
+		word-wrap: break-word;
+	}
+}
+
+.font-size-base() {
+	.font-size(@font-size-base);
+}
+
+blockquote,
+address,
+img,
+i,
+p,
+a.link,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+img,
+blockquote,
+address,
+p {
+	position: relative;
+}
+
+blockquote,
+address,
+p {
+	margin-bottom: ~'@{marg-bottom-global-text-elems}em';
+	color: @base-p;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: @base-h;
+	font-family: '@{font-name-base}@{font-weight-heading}';
+
+	em {
+		font-family: ~'@{font-name-base}@{font-weight-heading}_italic';
+	}
+
+	a {
+		color: inherit;
+
+		&:hover {
+			color: inherit;
+		}
+	}
+
+	strong {
+		font-family: '@{font-name-base}@{font-weight-heading-strong}' !important;
+	}
+}
+
+h1,
+h2,
+h3,
+h4, 
+h5,
+h6 {
+	margin-bottom: ~'@{marg-bottom-global-text-elems}em';
+}
+
+.make-headings(
+	@headings,
+	@headings-line-height,
+	@headings-scalable-tresholds
+);
+
+a {
+	color: @base-a;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	text-decoration: none;
+
+	&:hover {
+		color: inherit;
+		text-decoration: underline;
+	}
+
+	&.cover-link {
+		position: absolute;
+		top: 0;
+		height: 100%;
+		left: 0;
+		width: 100%;
+		z-index: 100;
+	}
+}
+
+// add animation to cover linked elem on hover
+.cover-link-elem {
+	> a {
+		position: absolute;
+		top: 0;
+		height: 100%;
+		left: 0;
+		width: 100%;
+		z-index: 100;
+	}
+}
+
+a,
+a > i,
+a > img {
+	cursor: pointer;
+}
+
+cite {
+	font-family: inherit;
+	font-size: 1em;
+	line-height: 1em;
+	.font(~'@{font-weight-base}_italic');
+	
+	strong {
+		.font(~'@{font-weight-strong}_italic')
+	}
+}
+
+.link,
+.btn {
+	display: table;
+	position: relative;
+    cursor: pointer;
+	.marg-auto(0, @marg-bottom-global-elems_sm);
+	z-index: 50;
+	white-space: normal;
+
+	&.left {
+		.left;
+	}
+
+	&.right {
+		.right;
+	}
+
+	&.center {
+		.center;
+	}
+}
+
+.link,
+.btn,
+img,
+i {
+	.make-media-links-adjust(@devices);
+}
+
+.btn {
+	.text-center;
+	
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.btns {
+	display: table;
+	font-size: 0; // reset inline-block side spacings
+
+	.btn {
+		display: inline-block;
+	}
+}
+
+small {
+	font-size: ~'@{small-tag-size}em';
+	line-height: ~'@{small-tag-size}em';
+}
+
+center {
+	.text-center;
+}
+
+code {
+	font-family: inherit;
+	line-height: inherit;
+	color: #c5c8c6; // color _config
+	background-color: #1d1f21; // bg-color _config
+	font-size: ~'@{code-font-size}em';
+	padding: ~'@{code-padd-vertical}em' ~'@{code-padd-horizontal}em'; 
+	.border-radius(~'@{code-border-radius}em');
+	white-space: normal;
+}
+
+pre {
+	background-color: #1d1f21; // bg-color _config
+	.marg-auto(0,15); // em _config
+	.padd(10,25,10,25);  // em _config
+	overflow: auto;
+	white-space: normal;
+	
+	code {
+		display: block;
+		.border-radius(0px); // em _config
+		font-size: 1em;
+		word-wrap: normal;
+		white-space: pre;
+	}
+}
+
+img,
+i {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	cursor: default;
+}
+
+img {
+	.marg-auto(0, @marg-bottom-global-elems_sm);
+}
+
+hr {
+	display: block;
+	margin: auto;
+	border: 0; // width _config
+	border-top: solid #f2f2f2;  // color _config
+	border-width: 1px; // em _config
+
+	&.small {
+		max-width: 50%;
+	}
+}
+
+* {
+	// loop 60-100 
+	// and media
+	&.mw60 {
+		max-width: 60%;
+	}
+
+	&.mw70 {
+		max-width: 70%;
+	}
+
+	&.mw80 {
+		max-width: 80%;
+	}
+
+	&.mw90 {
+		max-width: 90%;
+	}
+
+	&.mw100 {
+		max-width: 100%;
+	}
+
+	&.mw-none {
+		max-width: none;
+	}
+
+	@media screen and (max-width: (at(@devices, mob) * 1px) ) {
+		&.mw-mob-none {
+			max-width: none;
+		}
+		&.mw-mob100 {
+			max-width: 100%;
+		}
+	}
+}

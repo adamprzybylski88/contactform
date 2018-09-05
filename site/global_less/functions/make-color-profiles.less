@@ -1,0 +1,85 @@
+.make-colorprofiles(@color_list) {
+	@cl: length(@color_list);
+
+	.colors-loop(@i) when (@i > 0) {
+		@each_pos: extract(@color_list, @i);
+
+		@name: extract(@each_pos, 1); 				// color name
+		@p_hash: extract(@each_pos, 2); 			// text color hash
+		@h_hash: extract(@each_pos, 3); 			// headings color hash
+		@link_hash: extract(@each_pos, 4); 			// link color
+		@link_hash_hover: extract(@each_pos, 5); 	// link color:hover
+		@li_hash: extract(@each_pos, 6); 			// li text color OUTDATED
+		@dot_hash: extract(@each_pos, 7); 			// li dot color
+		@cite_hash: extract(@each_pos, 8); 			// cite color
+
+		// construction
+		.colorprofile_@{name} {
+			.content {
+				color: @p_hash;
+				
+				h1,
+				h2,
+				h3,
+				h4,
+				h5,
+				h6 {
+					color: @h_hash;
+				}
+
+				p,
+				blockquote,
+				address {
+					color: @p_hash;
+
+					a {
+						color: @link_hash;
+
+						&:hover {
+							color: @link_hash_hover;
+						}
+					}
+				}
+
+				a.link {
+					color: @link_hash;
+
+					&:hover {
+						color: @link_hash_hover;
+					}
+				}
+
+				blockquote {
+					cite {
+						color: @cite_hash;
+					}
+				}
+
+				ul,
+				ol {
+					> li {
+						color: @li_hash;
+
+						a {
+							color: @link_hash;
+
+							&:hover {
+								color: @link_hash_hover;
+							}
+						}
+
+						&:before {
+							color: @dot_hash;
+						}
+					}
+				}
+			}
+		}
+
+		// end construction
+		.colors-loop(@i - 1);
+	}
+
+	.colors-loop(0) {}
+	.colors-loop(@cl);
+}

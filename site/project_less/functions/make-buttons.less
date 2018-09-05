@@ -1,0 +1,47 @@
+.make-buttons(@color_list) {
+	@cl: length(@color_list);
+
+	.colors-loop(@i) when (@i > 0) {
+		@each_pos: extract(@color_list, @i);
+		@name: extract(@each_pos, 1); 				// color name
+		@bg-hash: extract(@each_pos, 2); 			// bg-color hash
+		@bg-hash-hover: extract(@each_pos, 3); 		// bg-color hash:hover
+		@text-hash: extract(@each_pos, 4); 			// text-color hash
+		@text-hash_hover: extract(@each_pos, 5); 	// text-color hash:hover
+		// @border-hash: extract(@each_pos, 6); 		// border-color hash
+		// @border-hash_hover: extract(@each_pos, 7); 	// border-color hash:hover
+
+		// new
+		.btns.btn_color_@{name} {
+			.btn {
+				color: @text-hash;
+				background-color: @bg-hash;
+				// border-color: @border-hash;
+				
+				&:hover {
+					color: @text-hash_hover;
+					background-color: @bg-hash-hover;
+					// border-color: @border-hash_hover;
+				}
+			}
+		}
+
+		.btn.btn_color_@{name} {
+			color: @text-hash;
+			background-color: @bg-hash;
+			// border-color: @border-hash;
+			
+			&:hover {
+				color: @text-hash_hover;
+				background-color: @bg-hash-hover;
+				// border-color: @border-hash_hover;
+			}
+		}
+
+		// end construction
+		.colors-loop(@i - 1);
+	}
+
+	.colors-loop(0) {}
+	.colors-loop(@cl);
+}

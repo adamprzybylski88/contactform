@@ -1,0 +1,223 @@
+.generate-order(@n, @nm:1) when (@nm =< @n) {
+	.order-@{nm} {
+		.flex-order(@nm);
+	}
+
+	.media-order-screen(@dev) {
+		.iter(length(@dev));
+
+		.iter(@i) when (@i > 0) {
+			.iter(@i - 1);
+
+			@arr_elem: extract(@dev, @i);
+			@name: extract(@arr_elem, 1);
+			@size: extract(@arr_elem, 2);
+
+			@media screen and (max-width: ~'@{size}px') {
+				.order-@{name}-@{nm} {
+					.flex-order(@nm);
+				}
+			}
+		}
+	}
+	.media-order-screen(@devices);
+
+	.generate-order(@n, (@nm + 1));
+}
+
+.media-screen(@dev) {
+	.iter(length(@dev));
+
+	.iter(@i) when (@i > 0) {
+		.iter(@i - 1);
+
+		@arr_elem: extract(@dev, @i);
+		@name: extract(@arr_elem, 1);
+		@size: extract(@arr_elem, 2);
+
+		.@{name} {
+			max-width: @size + @global-container-padd + @global-container-padd * 1px;
+			width: 100%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+}
+
+.and-media-screen(@dev) {
+	.iter(length(@dev));
+
+	.iter(@i) when (@i > 0) {
+		.iter(@i - 1);
+
+		@arr_elem: extract(@dev, @i);
+		@name: extract(@arr_elem, 1);
+		@size: extract(@arr_elem, 2);
+
+		&.@{name} {
+			max-width: @size + @global-container-padd + @global-container-padd * 1px;
+		}
+	}
+}
+
+.generate-columns(@colw, @nm:1) when (@nm =< @colw) {
+
+	// columns
+	@col-math: round( (100% / @colw) * @nm , 3);
+
+	// --- BOX COLUMNS --- //
+	.turbobox {
+		> .tx-@{nm} {
+			width: @col-math - 3%;
+			max-width: @col-math - 3%;
+		}
+
+		> .ml-@{nm} {
+			margin-left: @col-math + 1.5%;
+		}
+
+		> .mr-@{nm} {
+			margin-right: @col-math + 1.5%;
+		}
+
+		> .mml-@{nm} {
+			margin-left: -@col-math - 1.5%; // 100% is buggy on resizing
+		}
+
+		> .mmr-@{nm} {
+			margin-right: -@col-math - 1.5%; // 100% is buggy on resizing
+		}
+
+		.media-columns-screen(@dev) {
+			.iter(length(@dev));
+
+			.iter(@i) when (@i > 0) {
+				.iter(@i - 1);
+
+				@arr_elem: extract(@dev, @i);
+				@name: extract(@arr_elem, 1);
+				@size: extract(@arr_elem, 2);
+
+				@media screen and (max-width: ~'@{size}px') {
+					> .tx-@{name}-@{nm} {
+						width: @col-math - 3% !important;
+						max-width: @col-math - 3% !important;
+					}
+
+					> .ml-@{name}-0 {
+						margin-left: 1.5%;
+					}
+
+					> .mr-@{name}-0 {
+						margin-right: 1.5%;
+					}
+
+					> .ml-@{name}-@{nm} {
+						margin-left: @col-math + 1.5%;
+					}
+
+					> .mr-@{name}-@{nm} {
+						margin-right: @col-math + 1.5%;
+					}
+
+					> .mml-@{name}-0 {
+						margin-left: 1.5%;
+					}
+
+					> .mmr-@{name}-0 {
+						margin-right: 1.5%;
+					}
+
+					> .mml-@{name}-@{nm} {
+						margin-left: -@col-math - 1.5%;
+					}
+
+					> .mmr-@{name}-@{nm} {
+						margin-right: -@col-math - 1.5%;
+					}
+				}
+			}
+		}
+		.media-columns-screen(@devices);
+
+	}
+
+	// --- TABLE COLUMNS --- //
+	.turbotable {
+		> .tx-@{nm} {
+			width: @col-math;
+			max-width: @col-math;
+		}
+
+		> .ml-@{nm} {
+			margin-left: @col-math;
+		}
+
+		> .mr-@{nm} {
+			margin-right: @col-math;
+		}
+
+		> .mml-@{nm} {
+			margin-left: -@col-math;
+		}
+
+		> .mmr-@{nm} {
+			margin-right: -@col-math;
+		}
+
+		.media-table-columns-screen(@dev) {
+			.iter(length(@dev));
+
+			.iter(@i) when (@i > 0) {
+				.iter(@i - 1);
+
+				@arr_elem: extract(@dev, @i);
+				@name: extract(@arr_elem, 1);
+				@size: extract(@arr_elem, 2);
+
+				@media screen and (max-width: ~'@{size}px') {
+					> .tx-@{name}-@{nm} {
+						width: @col-math !important;
+						max-width: @col-math !important;
+					}
+
+					> .ml-@{name}-0 {
+						margin-left: 0;
+					}
+
+					> .mr-@{name}-0 {
+						margin-right: 0;
+					}
+
+					> .ml-@{name}-@{nm} {
+						margin-left: @col-math;
+					}
+
+					> .mr-@{name}-@{nm} {
+						margin-right: @col-math;
+					}
+
+					> .mml-@{name}-0 {
+						margin-left: 0;
+					}
+
+					> .mmr-@{name}-0 {
+						margin-right: 0;
+					}
+
+					> .mml-@{name}-@{nm} {
+						margin-left: -@col-math;
+					}
+
+					> .mmr-@{name}-@{nm} {
+						margin-right: -@col-math;
+					}
+				}
+			}
+		}
+		.media-table-columns-screen(@devices);
+
+	}
+
+	.generate-columns(@colw, (@nm + 1));
+}

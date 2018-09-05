@@ -1,0 +1,38 @@
+// --- BASE MIXINS --- // FIRED IN PROJECT SECTION //
+@import '../functions/mixins/variables.less';
+@import '../functions/mixins/animation.less';
+
+// --- FUNCTIONS --- //
+@import "../functions/make-media.less";
+@import "../functions/make-headings.less";
+@import "../functions/make-spacings.less";
+@import "../functions/make-grid.less";
+@import "../functions/make-content-elems.less";
+@import "../functions/make-gallery.less";
+
+// --- FUNCTIONS --- // FIRED IN PROJECT SECTION //
+@import "../functions/make-fonts.less";
+@import "../functions/make-classes.less";
+@import "../functions/make-bg-colors.less";
+@import "../functions/make-color-profiles.less";
+
+// --- CONFIG --- //
+@import "config.less";
+
+// --- USEFULL CLASSES --- //
+@import '../classes_useful.less';
+
+
+// --- CONSTRUCTOR --- //
+@import "colors.less";
+@import '../reset.less';
+
+@import "../layout.less";                                      // required _functions ['make-media.less', 'make-headings.less', 'make-spacings.less']
+@import "../lists.less";
+
+@import "../variables.less";
+@import "../borders.less";
+@import "../content-parts.less";                               // required _functions ['make-gallery.less']
+@import "../components.less";
+
+@import "../grid.less";                                        // required _functions ['make-grid.less']

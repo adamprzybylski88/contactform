@@ -1,0 +1,159 @@
+#e-dummy {
+	display: none;
+}
+
+#wpadminbar {
+	position: fixed !important;
+}
+
+.table-container {
+	overflow-x: auto;
+	max-width: 100%;
+}
+
+.vid-container {
+	position: relative;
+	display: table;
+	width: 100%;
+	height: 0;
+	padding-bottom: 56.25%;
+
+	iframe {
+		position: absolute;
+		top: 0;
+		height: 100%;
+		left: 0;
+		width: 100%;
+	}
+}
+
+.paralax-wrapper {
+	display: block;
+	position: absolute;
+	top: 0; // .js paralax
+	left: 0;
+	height: 100%;
+	width: 100%;
+	overflow: visible;
+
+	&.oh {
+		overflow: hidden;
+	}
+	
+	&.z0 {
+		z-index: 0;
+	}
+
+	&.z1 {
+		z-index: 1;
+	}
+
+	&.z2 {
+		z-index: 2;
+	}
+
+	&.z3 {
+		z-index: 3;
+	}
+
+	&.z4 {
+		z-index: 4;
+	}
+
+	&.z5 {
+		z-index: 5;
+	}
+
+	&.relative {
+		position: relative;
+	}
+
+	* {
+		position: relative;
+
+		&.full {
+			height: 125%;
+			.background-size(cover) !important;
+		}
+	}
+
+	&[paralax-top] {
+		* {
+			&.full {
+				height: 110%;
+				.background-size(cover) !important;
+			}
+		}
+	}
+
+	@media screen and (max-width: (at(@devices, md) * 1px) ) {
+		> * {
+			top: 0 !important; // reset element to natural position after .js turns off
+		}
+	}
+}
+
+span.background-img {
+	display: block;
+	position: absolute;
+	top: 0; // .js paralax
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-position: 50% 0;
+	background-repeat: no-repeat;	 
+	.background-size(auto 100%);
+
+	&.auto {
+		.background-size(auto);
+	}
+
+	&.cover {
+		.background-size(cover) !important;
+	}
+
+	&.top {
+	// 	background-position: 50% 0; // default
+	}
+
+	&.mid {
+		background-position: 50% 50%;
+	}
+
+	&.bot {
+		background-position: 50% 100%;
+	}
+
+	////////////////////////// loop
+	&.z0 {
+		z-index: 0;
+	}
+
+	&.z1 {
+		z-index: 1;
+	}
+
+	&.z2 {
+		z-index: 2;
+	}
+
+	&.z3 {
+		z-index: 3;
+	}
+
+	&.z4 {
+		z-index: 4;
+	}
+
+	&.z5 {
+		z-index: 5;
+	}
+
+	@media screen and (max-width: (at(@devices, mob) * 1px)) {
+		.background-size(auto 80%);
+	}
+
+	@media screen and (max-width: (at(@devices, sm) * 1px)) {
+		.background-size(auto 60%);
+	}
+}

@@ -1,0 +1,179 @@
+// --- DISPLAY --- //
+.none {
+    display: none !important;
+}
+
+.block {
+    display: block !important;
+}
+
+.inline-block {
+    display: inline-block !important;
+}
+
+// .md_none
+// .md_block
+.make-display-media-classes(@devices, block none);
+
+// --- ALIGNS --- //
+.aligncenter,
+.alignleft,
+.alignright {
+	position: relative;
+}
+
+.alignleft {
+	float: left !important;
+	.marg-right(@marg-bottom-global-elems_sm);
+}
+
+.alignright {
+	float: right !important;
+	.marg-left(@marg-bottom-global-elems_sm);
+}
+
+.aligncenter {
+	float: none !important;
+}
+
+// pb80 => padding bottom 80 
+// pb-md40 => padding bottom 40 on medium device
+// mt40 => margin top 40
+// mt-sm-40 => margin top minus 40 on small device
+.make-loop-spacings(@devices);
+
+.z-top {
+    z-index: 60 !important; // top over .content || article
+}
+
+.maxw {
+    width: 100%;
+}
+
+.absolute-cover {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	top: 0;
+	height: 100%;
+}
+
+.absolute-center {
+	position: absolute;
+	margin: auto;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.fixed-center {
+	position: fixed;
+	margin: auto;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.to-right,
+.right {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.to-left,
+.left {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.to-center,
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.overhide {
+    overflow: hidden;
+}
+
+.overshow {
+    overflow: visible;
+}
+
+.upper,
+.uppercase {
+    text-transform: uppercase;
+}
+
+.downcase {
+    text-transform: none;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.line-through {
+    text-decoration: line-through;
+}
+
+.word-warp {
+    white-space: nowrap;
+}
+
+.break-word {
+    word-break: break-all;
+}
+
+.clearfix {
+	.zoom();
+
+	&:before,
+	&:after {
+		content: '';
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+.clearfix:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.box-sizing {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.background-clip {
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+}
+
+.whitespace-warp {
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+}

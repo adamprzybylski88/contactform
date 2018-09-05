@@ -1,0 +1,222 @@
+// --- BASE SCALLING --- //
+.media(@width, @height, @font-size) {
+
+    @media screen and (max-width: @width), screen and (max-height: @height) {
+        font-size: ~"@{font-size}px";
+        line-height: (@font-size + @line-height-base) / @font-size;
+    }
+}
+
+.make-media(@tresholds) {
+	@th: length(@tresholds);
+
+	.colors-loop(@len, @i:1) when (@i =< @len) {
+		@each_th: extract(@tresholds, @i);
+
+		@width: extract(@each_th, 1);
+		@height: extract(@each_th, 2);
+		@font-size: extract(@each_th, 3);
+
+		.media(
+			@width,
+			@height,
+			@font-size
+		);
+
+		.colors-loop(@len, (@i + 1));
+	}
+
+	.colors-loop(@th);
+}
+
+// --- DISPLAY MEDIA CLASSES --- //
+.make-display-media-classes(@dev, @classVals) {
+    @devLen: length(@dev);
+    @valLen: length(@classVals);
+
+    .iter(@i) when (@i <= @devLen) {
+        @arr_elem: extract(@dev, @i);
+        @name: extract(@arr_elem, 1);
+        @size: extract(@arr_elem, 2);
+
+        .iterClass(@a) when (@a <= @valLen) {
+            @val: extract(@classVals, @a);
+
+            .@{name}_@{val} {
+                @media screen and (max-width: (at(@devices, @name) * 1px)) {
+                    display: @val !important;
+                }
+            }
+            .iterClass(@a + 1);
+        }
+        .iterClass(1);
+
+        .iter(@i + 1);
+    }
+    .iter(1);
+
+}
+
+// --- MEDIA FOR CONTENT ADJUST	 --- //
+.make-media-content-adjust(@dev) {
+	.iter(length(@dev));
+	
+	.iter(@i) when (@i > 0) {
+		.iter(@i - 1);
+		
+		@arr_elem: extract(@dev, @i);
+		@devShort: extract(@arr_elem, 1);
+		@devSize: extract(@arr_elem, 2);
+		
+		@media screen and (max-width: ~'@{devSize}px') {
+			&.@{devShort}_center {
+				.text-center;
+				.contentContainers(margin-left margin-right, auto, '');
+
+				.images {
+					a,
+					img,
+					i {
+						.marg-right(@content-images-side-spacing / 2);
+						.marg-left(@content-images-side-spacing / 2);
+					}
+
+					// a {
+					// 	img,
+					// 	i {
+					// 		margin-right: auto;
+					// 		margin-left: auto;
+					// 	}
+					// }
+				}
+
+				.sided {
+					.images {
+						display: block;
+					}
+				}
+			}
+			&.@{devShort}_right {
+				.text-right;
+				.contentContainers(margin-left, auto, '');
+				.contentContainers(margin-right, 0, '');
+
+				.images{
+					a,
+					img,
+					i {
+						.marg-left(@content-images-side-spacing);
+						.marg-right(0);
+
+						&:first-child {
+							margin-left: auto;
+							.marg-right(0);
+						}
+					}
+				}
+			}
+			&.@{devShort}_left {
+				.text-left;
+				.contentContainers(margin-left, 0, '');
+				.contentContainers(margin-right, auto, '');
+
+				.images {
+					a,
+					img,
+					i {
+						.marg-right(@content-images-side-spacing);
+
+						&:last-child {
+							margin-right: auto;
+							.marg-left(0);
+						}
+					}
+				}
+			}
+			&.@{devShort}_center,
+			&.@{devShort}_right,
+			&.@{devShort}_left {
+				.images {
+					a {
+						img,
+						i {
+							margin-right: auto;
+							margin-left: auto;
+						}
+					}
+				}
+			}
+			&.@{devShort}_right,
+			&.@{devShort}_left {
+				.sided {
+					.images {
+						display: table-cell;
+					}
+				}
+			}
+
+			&.@{devShort}_center,
+			&.@{devShort}_right {
+				ol,
+				ul {
+					li {
+						&:before {
+							display: inline-block; // correcting li attributes position
+						}
+					}
+				}
+			}
+
+			a,
+			i,
+			img,
+			.images,
+			figure {
+				&.@{devShort}_aligncenter {
+					float: none !important;
+					display: block;
+					margin-left: auto;
+					margin-right: auto;
+				}
+
+				&.@{devShort}_alignleft {
+					float: left !important;
+					margin-right: ~'@{alignment-spacings}em';
+					margin-left: auto;
+				}
+
+				&.@{devShort}_alignright {
+					float: right !important;
+					margin-right: auto;
+					margin-left: ~'@{alignment-spacings}em';
+				}
+			}
+
+		}	
+	}
+}
+
+// --- MEDIA FOR btns and links	 --- //
+.make-media-links-adjust(@dev) {
+	.iter(length(@dev));
+	
+	.iter(@i) when (@i > 0) {
+		.iter(@i - 1);
+		
+		@arr_elem: extract(@dev, @i);
+		@devShort: extract(@arr_elem, 1);
+		@devSize: extract(@arr_elem, 2);
+		
+		@media screen and (max-width: ~'@{devSize}px') {
+			&.@{devShort}_center {
+				.center;
+			}
+			&.@{devShort}_right {
+				.right;
+			}
+			&.@{devShort}_left {
+				.left;
+			}
+		}	
+	}
+}

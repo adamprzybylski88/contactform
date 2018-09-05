@@ -1,0 +1,81 @@
+// --- require @contentElems --- //
+.contentElems(@style, @styleVal, @important) {
+    @eLen: length(@contentElems);
+    @sLen: length(@style);
+    
+    .containers-loop(@inLen, @i:1) when (@i =< @inLen) {
+        @eachCont: extract(@contentElems, @i);
+
+
+        .styles-loop(@asLen, @a:1) when (@a =< @asLen) {
+            @eachStyle: extract(@style, @a);
+
+            @{eachCont} when not (@important = important) {
+                @{eachStyle}: @styleVal;
+            } 
+
+            @{eachCont} when (@important = important) {
+                @{eachStyle}: @styleVal !important;
+            }
+
+            .styles-loop(@asLen, (@a + 1));
+        }
+        .styles-loop(@sLen);
+
+        .containers-loop(@inLen, (@i + 1));
+    }
+    .containers-loop(@eLen);
+}
+
+// --- require @contentContainers --- //
+.contentContainers(@style, @styleVal, @important) {
+    @cLen: length(@contentContainers);
+    @sLen: length(@style);
+    
+    .containers-loop(@inLen, @i:1) when (@i =< @inLen) {
+        @eachCont: extract(@contentContainers, @i);
+
+
+        .styles-loop(@asLen, @a:1) when (@a =< @asLen) {
+            @eachStyle: extract(@style, @a);
+
+            @{eachCont} when not (@important = important) {
+                @{eachStyle}: @styleVal;
+            } 
+
+            @{eachCont} when (@important = important) {
+                @{eachStyle}: @styleVal !important;
+            }
+
+            .styles-loop(@asLen, (@a + 1));
+        }
+        .styles-loop(@sLen);
+
+        .containers-loop(@inLen, (@i + 1));
+    }
+    .containers-loop(@cLen);
+}
+
+.alignContentFloatingElements() {
+    a,
+    i,
+    img,
+    .images,
+    figure {
+        vertical-align: top;
+
+        &.alignleft {
+            margin-right: ~'@{alignment-spacings}em';
+        }
+
+        &.alignright {
+            margin-left: ~'@{alignment-spacings}em';
+        }
+
+        &.aligncenter {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}

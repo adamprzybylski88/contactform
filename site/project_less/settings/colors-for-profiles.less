@@ -1,0 +1,477 @@
+// --- COLOR PROFILES MIXINS --- //
+// (1) name => textColor-elementsColor (white-blue)
+// (2) text color           (3) headings color
+// (4) a color              (5) a:hover color
+// (6) li color             (7) li attr color
+// (8) cite color
+
+@colorprofiles:
+
+// for dark blue, black
+white-blue 
+@pp-wa-1                @white
+@pp-wa-4                darken(@pp-wa-4, 10%)
+@white                  @pp-wa-4
+@pp-wa-4
+,
+
+// default and pale bgs
+blue 
+@base-p                 @base-h
+@pp-wa-4                darken(@pp-wa-4, 10%)
+@base-li                @pp-wa-4
+@pp-wa-4
+,
+
+// for blue bg 
+pale-blue 
+@white                  @white
+@pp-wa-2                darken(@pp-wa-2, 10%)
+@white                  @pp-wa-2
+@pp-wa-2
+,
+
+white-green
+@pp-tm-1                @white
+@pp-tm-4                darken(@pp-tm-4, 10%)
+@white                  @pp-tm-4
+@pp-tm-4
+,
+
+green
+@base-p                 @base-h
+@pp-tm-4                darken(@pp-tm-4, 10%)
+@base-li                @pp-tm-4
+@pp-tm-4
+,
+
+pale-green
+@white                  @white
+@pp-tm-2                darken(@pp-tm-2, 10%)
+@white                  @pp-tm-2
+@pp-tm-2
+,
+
+white-pink
+@pp-cp-1                @white
+@pp-cp-4                darken(@pp-cp-4, 10%)
+@white                  @pp-cp-4
+@pp-cp-4
+,
+
+pink
+@base-p                 @base-h
+@pp-cp-4                darken(@pp-cp-4, 10%)
+@base-li                @pp-cp-4
+@pp-cp-4
+,
+
+pale-pink
+@white                  @white
+@pp-cp-2                darken(@pp-cp-2, 10%)
+@white                  @pp-cp-2
+@pp-cp-2
+,
+
+white-purple
+@white                  @white
+@pp-da-4                darken(@pp-da-4, 10%)
+@white                  @pp-da-4
+@pp-da-4
+,
+
+purple
+@base-p                 @base-h
+@pp-da-4                darken(@pp-da-4, 10%)
+@base-li                @pp-da-4
+@pp-da-4
+,
+
+pale-purple
+@pp-da-1                @white
+@pp-da-2                darken(@pp-da-2, 10%)
+@white                  @pp-da-2
+@pp-da-2
+,
+
+white-claret
+@white                  @white
+@pp-ia-4                darken(@pp-ia-4, 10%)
+@white                  @pp-ia-4
+@pp-ia-4
+,
+
+claret
+@base-p                 @base-h
+@pp-ia-4                darken(@pp-ia-4, 10%)
+@base-li                @pp-ia-4
+@pp-ia-4
+,
+
+pale-claret
+@pp-ia-1                @white
+@pp-ia-2                darken(@pp-ia-2, 10%)
+@white                  @pp-ia-2
+@pp-ia-2
+,
+
+white-alga
+@white                  @white
+@pp-pa-4                darken(@pp-pa-4, 10%)
+@white                  @pp-pa-4
+@pp-pa-4
+,
+
+alga
+@base-p                 @base-h
+@pp-pa-4                darken(@pp-pa-4, 10%)
+@base-li                @pp-pa-4
+@pp-pa-4
+,
+
+pale-alga
+@pp-pa-1                @white
+@pp-pa-2                darken(@pp-pa-2, 10%)
+@white                  @pp-pa-2
+@pp-pa-2
+,
+
+white-turquoise
+@white                  @white
+@pp-aa-4                darken(@pp-aa-4, 10%)
+@white                  @pp-aa-4
+@pp-aa-4
+,
+
+turquoise
+@base-p                 @base-h
+@pp-aa-4                darken(@pp-aa-4, 10%)
+@base-li                @pp-aa-4
+@pp-aa-4
+,
+
+pale-turquoise
+@pp-aa-1                @white
+@pp-aa-2                darken(@pp-aa-2, 10%)
+@white                  @pp-aa-2
+@pp-aa-2
+,
+
+white-brick
+@white                  @white
+@pp-ca-4                darken(@pp-ca-4, 10%)
+@white                  @pp-ca-4
+@pp-ca-4
+,
+
+brick
+@base-p                 @base-h
+@pp-ca-4                darken(@pp-ca-4, 10%)
+@base-li                @pp-ca-4
+@pp-ca-4
+,
+
+pale-brick
+@pp-ca-1                @white
+@pp-ca-2                darken(@pp-ca-2, 10%)
+@white                  @pp-ca-2
+@pp-ca-2
+,
+
+white-white
+@white                  @white
+@white                  darken(@white, 10%)
+@white                  @white
+@white
+,
+
+dark-base // for yellow backround
+@base-p-dark            @pp-dark
+@pp-dark                darken(@pp-dark, 10%)
+@base-p-dark            @pp-dark
+@pp-dark
+,
+
+light-metal-gray-blue
+@pp-light-metal-gray    @white
+@pp-wa-4                darken(@pp-wa-4, 10%)
+@pp-light-metal-gray    @pp-wa-4
+@pp-wa-4
+,
+
+metal-gray-blue
+@pp-metal-gray          @white
+@pp-wa-4                darken(@pp-wa-4, 10%)
+@pp-metal-gray          @pp-wa-4
+@pp-wa-4
+;
+
+// --- COLOR PROFILES end --- //
+
+
+// --- BACKGROUND COLORS && COLORS - for .html inline classes --- //
+@elements-colors:
+
+    pale-blue           @pp-wa-1
+,   light-blue          @pp-wa-2
+,   blue                @pp-wa-4
+,   dark-blue           @pp-wa-5
+,   darkest-blue        @pp-wa-6
+
+,   mazarine            @pp-mazarine
+,   dark-mazarine       @pp-dark-mazarine
+
+,   pale-green          @pp-tm-1
+,   light-green         @pp-tm-2
+,   green               @pp-tm-4
+,   dark-green          @pp-tm-5
+,   darkest-green       @pp-tm-6
+
+,   pale-pink           @pp-cp-1
+,   light-pink          @pp-cp-2
+,   pink                @pp-cp-4
+,   dark-pink           @pp-cp-5
+,   darkest-pink        @pp-cp-6
+
+,   pale-purple         @pp-da-1
+,   light-purple        @pp-da-2
+,   purple              @pp-da-4
+,   dark-purple         @pp-da-5
+,   darkest-purple      @pp-da-6
+
+,   pale-claret         @pp-ia-1
+,   light-claret        @pp-ia-2
+,   claret              @pp-ia-4
+,   dark-claret         @pp-ia-5
+,   darkest-claret      @pp-ia-6
+
+,   pale-alga          @pp-pa-1
+,   light-alga         @pp-pa-2
+,   alga               @pp-pa-4
+,   dark-alga          @pp-pa-5
+,   darkest-alga       @pp-pa-6
+
+,   pale-turquoise      @pp-aa-1
+,   light-turquoise     @pp-aa-2
+,   turquoise           @pp-aa-4
+,   dark-turquoise      @pp-aa-5
+,   darkest-turquoise   @pp-aa-6
+
+,   pale-brick          @pp-ca-1
+,   light-brick         @pp-ca-2
+,   brick               @pp-ca-4
+,   dark-brick          @pp-ca-5
+,   darkest-brick       @pp-ca-6
+
+,   yellow              @pp-yellow
+,   orange              @pp-orange
+
+,   pale-beige          @pp-pale-beige
+,   beige               @pp-beige
+
+,   pale-gray           @grayF2
+
+,   pale-metal-gray     @pp-pale-metal-gray
+,   light-metal-gray    @pp-light-metal-gray
+,   metal-gray          @pp-metal-gray
+,   dark-metal-gray     @pp-dark-metal-gray
+
+,   dark                @pp-dark
+
+,   white               @white
+,   black               @black
+;
+
+// --- BUTTON COLORS--- //
+// (1) name             
+// (2) btn bg-color             (3) btn bg-color:hover         
+// (4) btn text-color           (5) btn text-color:hover 
+// (6) btn border-color         (7) btn border-color:hover  // suspended     
+@btn-colors:
+
+    // blue is default text color on white button
+    white-blue         
+    @white                      darken(@white, 10%)
+    @pp-wa-4                    darken(@pp-wa-4, 10%)
+
+,   blue         
+    @pp-wa-4                    darken(@pp-wa-4, 10%)
+    @white                      darken(@white, 10%)
+
+,   white-dark-blue         
+    @white                      darken(@white, 10%)
+    @pp-wa-5                    darken(@pp-wa-5, 10%)
+
+,   dark-blue         
+    @pp-wa-5                    darken(@pp-wa-5, 10%)
+    @white                      darken(@white, 10%)
+
+,   white-darkest-blue         
+    @white                      darken(@white, 10%)
+    @pp-wa-6                    darken(@pp-wa-6, 10%)
+
+,   darkest-blue         
+    @pp-wa-6                    darken(@pp-wa-6, 10%)
+    @white                      darken(@white, 10%)
+
+,   white-mazarine         
+    @white                      darken(@white, 10%)
+    @pp-mazarine                darken(@pp-mazarine, 10%)
+
+,   mazarine         
+    @pp-mazarine                darken(@pp-mazarine, 10%)
+    @white                      darken(@white, 10%)
+
+,   white-dark-mazarine         
+    @white                      darken(@white, 10%)
+    @pp-dark-mazarine           darken(@pp-dark-mazarine, 10%)
+
+,   dark-mazarine         
+    @pp-dark-mazarine           darken(@pp-dark-mazarine, 10%)
+    @white                      darken(@white, 10%)
+
+,   white-green               
+    @white                      darken(@white, 10%)
+    @pp-tm-4                    darken(@pp-tm-4, 10%)
+
+,   green               
+    @pp-tm-4                    darken(@pp-tm-4, 10%)
+    @white                      darken(@white, 10%)
+
+,   white-darkest-green               
+    @white                      darken(@white, 10%)
+    @pp-tm-6                    darken(@pp-tm-6, 10%)
+
+,   darkest-green               
+    @pp-tm-6                    darken(@pp-tm-6, 10%)
+    @white                      darken(@white, 10%)
+
+,   white-pink               
+    @white                      darken(@white, 10%)
+    @pp-cp-4                    darken(@pp-cp-4, 10%)
+
+,   pink               
+    @pp-cp-4                    darken(@pp-cp-4, 10%)
+    @white                      darken(@white, 10%)
+
+,   white-darkest-pink               
+    @white                      darken(@white, 10%)
+    @pp-cp-6                    darken(@pp-cp-6, 10%)
+
+,   darkest-pink               
+    @pp-cp-6                    darken(@pp-cp-6, 10%)
+    @white                      darken(@white, 10%)
+
+,   white-purple               
+    @white                      darken(@white, 10%)
+    @pp-da-4                    darken(@pp-da-4, 10%)
+
+,   purple               
+    @pp-da-4                    darken(@pp-da-4, 10%)
+    @white                      darken(@white, 10%)
+
+,   white-darkest-purple               
+    @white                      darken(@white, 10%)
+    @pp-da-6                    darken(@pp-da-6, 10%)
+
+,   darkest-purple               
+    @pp-da-6                    darken(@pp-da-6, 10%)
+    @white                      darken(@white, 10%)
+
+,   white-claret               
+    @white                      darken(@white, 10%)
+    @pp-ia-4                    darken(@pp-ia-4, 10%)
+
+,   claret               
+    @pp-ia-4                    darken(@pp-ia-4, 10%)
+    @white                      darken(@white, 10%)
+
+,   white-darkest-claret               
+    @white                      darken(@white, 10%)
+    @pp-ia-6                    darken(@pp-ia-6, 10%)
+
+,   darkest-claret               
+    @pp-ia-6                    darken(@pp-ia-6, 10%)
+    @white                      darken(@white, 10%)
+
+,   white-alga               
+    @white                      darken(@white, 10%)
+    @pp-pa-4                    darken(@pp-pa-4, 10%)
+
+,   alga               
+    @pp-pa-4                    darken(@pp-pa-4, 10%)
+    @white                      darken(@white, 10%)
+    
+,   white-darkest-alga               
+    @white                      darken(@white, 10%)
+    @pp-pa-6                    darken(@pp-pa-6, 10%)
+
+,   darkest-alga               
+    @pp-pa-6                    darken(@pp-pa-6, 10%)
+    @white                      darken(@white, 10%)
+
+,   white-turquoise              
+    @white                      darken(@white, 10%)
+    @pp-aa-4                    darken(@pp-aa-4, 10%)
+
+,   turquoise               
+    @pp-aa-4                    darken(@pp-aa-4, 10%)
+    @white                      darken(@white, 10%)
+        
+,   white-darkest-turquoise               
+    @white                      darken(@white, 10%)
+    @pp-aa-6                    darken(@pp-aa-6, 10%)
+
+,   darkest-turquoise               
+    @pp-aa-6                    darken(@pp-aa-6, 10%)
+    @white                      darken(@white, 10%)
+
+,   white-brick              
+    @white                      darken(@white, 10%)
+    @pp-ca-4                    darken(@pp-ca-4, 10%)
+
+,   brick               
+    @pp-ca-4                    darken(@pp-ca-4, 10%)
+    @white                      darken(@white, 10%)
+    
+,   white-darkest-brick               
+    @white                      darken(@white, 10%)
+    @pp-ca-6                    darken(@pp-ca-6, 10%)
+
+,   darkest-brick               
+    @pp-ca-6                    darken(@pp-ca-6, 10%)
+    @white                      darken(@white, 10%)
+
+,   yellow
+    @pp-yellow                  darken(@pp-yellow, 10%)
+    @pp-dark                    darken(@pp-dark, 10%)
+
+,   orange
+    @pp-orange                  darken(@pp-orange, 10%)
+    @white                      darken(@white, 10%)
+
+,   white
+    @white                      darken(@white, 10%)
+    @pp-wa-4                    darken(@pp-wa-4, 10%) // blue is project default
+
+,   black
+    @pp-dark                    darken(@pp-dark, 10%)
+    @white                      darken(@white, 10%)
+;
+
+@borderColors:
+
+    light-blue-darker           @pp-pale-blue_border_2
+,   light-blue                  @pp-pale-blue_border_1
+,   pale-blue                   @pp-pale-blue_border
+;
+
+@shadowColors: // soon (?)
+
+    green                       @pp-tm-4
+,   black                       @black
+;
+
+
+
+

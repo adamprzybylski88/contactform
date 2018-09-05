@@ -1,0 +1,15 @@
+//	usage: @-;.devicePx(fhd);
+
+//	.elem {
+//		width: @-;.devicePx(fhd);
+//	}
+
+.device(@name) {
+	@-: at(@devices, @name);
+}
+
+.devicePx(@name) {
+	// @-: at(@devices, @name) * 1px;
+	@q: at(@devices, @name);
+	@-: ~'@{q}px';
+}

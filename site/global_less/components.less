@@ -1,0 +1,124 @@
+// OVERFLOW ELEMENTS
+.oh,
+.overflow-part {
+    overflow: hidden;
+
+    img.overframe {
+        .marg-bottom(@marg-bottom-global-elems_lg);
+        .max-width(@overframe-image-max-width);
+
+        &.left,
+        &.to-left {
+            .top();
+            position: absolute;
+            left: auto;
+            .right();
+        }
+
+        @media screen and (max-width: (at(@devices, md) * 1px)) {
+            max-width: 100%;
+
+            &.left,
+            &.to-left {
+                left: auto !important;
+                right: auto !important;
+            }
+        }
+    }
+}
+
+// SECTION
+section {
+    position: relative;
+}
+
+// BOX
+[class*='tx-'].box {
+    .padd-left(@box-padd-horizontal);
+    .padd-right(@box-padd-horizontal);
+}
+
+.box {
+    position: relative;
+    .marg-auto(0,@marg-bottom-global-elems_md);
+    
+    .padd(@box-padd-top, @box-padd-horizontal, @box-padd-bottom, @box-padd-horizontal);
+
+    @media screen and (max-width: (at(@devices, sm) * 1px)) {
+        .padd-left(@box-padd-horizontal / 2);
+        .padd-right(@box-padd-horizontal / 2);
+    }
+    
+    .content {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+            .marg-bottom(@marg-bottom-global-elems_md / 2); // 15
+        }
+
+        .padd-bottom();
+        .padd-top();
+    }
+
+    &.box-sm {
+        .marg-bottom(30);
+        .padd(@box-padd-top / 1.5, @box-padd-horizontal / 3, @box-padd-bottom / 1.5, @box-padd-horizontal / 3);
+        .padd-left(@box-padd-horizontal / 3) !important;
+        .padd-right(@box-padd-horizontal / 3) !important;
+    }
+
+    &.box-md {
+        .padd(@box-padd-top, @box-padd-horizontal / 2, @box-padd-bottom, @box-padd-horizontal / 2);
+        .padd-left(@box-padd-horizontal / 2) !important;
+        .padd-right(@box-padd-horizontal / 2) !important;
+    }
+
+    &.box-lg {
+        .padd(@box-padd-top * 1.3, @box-padd-horizontal, @box-padd-bottom * 2, @box-padd-horizontal);
+    }
+}
+
+// CTA
+.cta {
+    position: relative;
+    .padd(@cta-padd-top, @cta-padd-horizontal, @cta-padd-bottom, @cta-padd-horizontal);
+}
+
+// raw top sticky bar with slider
+aside#tab_btns {
+    width: 100%;
+    .left();
+    z-index: 250;
+
+    #tabs_slider {
+        position: relative;
+        overflow: hidden;
+
+        ul {
+            display: table;
+            margin: auto;
+
+            li {
+                display: table-cell;
+
+                a {
+                    display: block;
+                    white-space: nowrap;
+                    margin-left: -1px;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+
+                &.active {
+                    a {}
+                }
+            }
+        }
+    }
+}

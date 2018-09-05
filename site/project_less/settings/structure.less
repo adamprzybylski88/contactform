@@ -1,0 +1,37 @@
+// --- REQUIRED CONSTRUCTOR --- //
+@import url('less/settings/structure.less');
+
+
+// --- COLORS --- //
+@import 'colors.less';
+@import 'colors-for-profiles.less';
+
+
+// --- FUNCTIONS --- //
+@import "../functions/make-buttons.less";
+
+
+// --- CONFIG --- //
+@import "config.less";                                         // required constructor_functions ['make-fonts.less']
+
+
+// --- PROJECT --- //
+@import "../layout.less";
+@import "../lists.less";
+
+@import "../classes.less";                                     // required constructor_functions ['make-classes.less']
+@import "../color-profiles.less";                              // required constructor_functions ['make-classes-colors-bg.less', 'make-color-profiles.less']
+@import "../box-shadows.less";
+
+@import "../buttons.less";                                     // required _functions ['make-buttons.less']
+@import "../content-parts.less";
+@import "../components.less";
+
+@import "../navigation.less";
+@import "../header.less";
+@import "../footer.less";
+
+
+// --- PROJECT ADDONS --- //
+@import "../addons/icon-samples.less";
+@import "../addons/pp-lightbox.less";

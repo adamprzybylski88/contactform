@@ -1,0 +1,267 @@
+#changelog_nav {
+	.content {
+		> ul {
+			display: block;
+			.padd-left();
+
+			> li {
+				.padd-bottom();
+
+				ul {
+					.padd(5);
+
+					li {
+						.padd-left(10);
+						.padd-bottom(5);
+
+						a {
+							.font-size(18);
+							color: @gray80;
+						}
+
+						&.active {
+							color: @pp-wa-4;
+
+							a {
+								color: @pp-wa-4;
+							}
+						}
+					}
+				}
+
+				> a {
+					.font-size(20);
+					display: block;
+					.padd(3,15,3,15);
+					.marg-left(-15);
+
+					&:hover {
+						background-color: @pp-wa-1;
+						text-decoration: none;
+					}
+				}
+
+				&.active-parent {
+					background-color: @white;
+					.padd(10,15,5,15);
+					.marg-bottom(5);
+					display: block;
+
+					> a {
+						color: @pp-dark-metal-gray;
+						.marg-right(-15);
+					}
+				}
+			}
+
+			li {
+				&:before {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+#changelog_posts {
+	.changelog-post {
+		background-color: @white;
+		.marg-auto(0,30);
+		.padd(35,35,15,35);
+		@media screen and (max-width: @small) {
+			.padd(35,20,30,20);
+		}
+
+		.main_title {
+			h2,
+			p {
+				.marg-bottom(10);
+			}
+
+			h2 {
+				.font-size(24);
+			}
+
+			p.date {
+				.font-size(14);
+				position: absolute;
+				.right(35);
+				.top(40);
+				@media screen and (max-width: @small) {
+					position: relative;
+					top: auto;
+					right: auto;
+				}
+			}
+		}
+
+		.content {
+			li,
+			p {
+				.font-size(16);
+			}
+
+			h2 {
+				.font-size(24);
+
+				a {
+					color: @base-a;
+					.underline;
+				}
+			}
+
+			h3.section {
+				.font-size(18);
+			}
+
+			h3.section {
+				.font-size(16);
+				.uppercase;
+				.font(500);
+			}
+
+			h4.content-personalization,
+			h4.data-platform,
+			h4.intranet-analytics,
+			h4.tag-manager,
+			h4.web-analytics {
+				position: relative;
+				.uppercase;
+				.font(500);
+				.padd(6,7,6,7);
+				.marg(0,3,5,0);
+				display: block;
+				.font-size(14);
+				color: @base-h;
+				.padd-left(22);
+
+				&:before {
+					content: '';
+					position: absolute;
+					.left();
+					top: 50%;
+					margin-top: -10px;
+					.background-size(cover);
+					.dims-px(18,18);
+				}
+			}
+
+			h4.tag-manager {
+				&:before {
+					background-image: url('@{img}/ico_Product-Tag_Manager.svgz');
+				}
+			}
+
+			h4.web-analytics {
+				&:before {
+					background-image: url('@{img}/ico_Product-Web_analytics.svgz');
+				}
+			}
+
+			h4.content-personalization {
+				&:before {
+					background-image: url('@{img}/ico_Product-Content_Personalization.svgz');
+				}
+			}
+
+			h4.data-platform {
+				&:before {
+					background-image: url('@{img}/ico_Product-DMP.svgz');
+				}
+			}
+
+			h4.intranet-analytics {
+				&:before {
+					background-image: url('@{img}/ico_Product-Intranet.svgz');
+				}
+			}
+
+			.label {
+				position: relative;
+				display: inline-block;
+				.uppercase;
+				.font-size(12,0);
+				.font(500);
+				.padd(6,7,6,7);
+				.marg(0,3,5,0);
+
+				&.major {
+					color: @pp-cp-4;
+					background-color: @pp-cp-1;
+				}
+
+				&.new {
+					color: @pp-da-4;
+					background-color: @pp-da-1
+				}
+
+				&.fix,
+				&.improve {
+					color: @pp-tm-5;
+					background-color: @pp-tm-1;
+				}
+
+				&.minor {
+					color: @pp-wa-4;
+					background-color: @pp-wa-1;
+				}
+			}
+
+			ul {
+				li {
+					.padd-bottom(5);
+
+					&:before {
+						color: @pp-dark-metal-gray;
+					}
+				}
+			}
+
+			div.line {
+				position: relative;
+				.padd(10,0,1,30);
+				.marg-bottom(30);
+
+				&:before {
+					content: '';
+					position: absolute;
+					.top();
+					.bottom();
+					.left(10);
+					width: 2px;
+					background-color: @pp-pale-blue_border;
+				}
+
+				&.green {
+					&:before {
+						background-color: @pp-tm-4;
+					}
+				}
+
+				&.blue {
+					&:before {
+						background-color: @pp-wa-4;
+					}
+				}
+
+				&.pink {
+					&:before {
+						background-color: @pp-cp-4;
+					}
+				}
+
+				&.purple {
+					&:before {
+						background-color: @pp-da-4;
+					}
+				}
+
+				&.claret {
+					&:before {
+						background-color: @pp-ia-4;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,121 @@
+@fontListCharsName: 'listChars';
+.font-face(@fontListCharsName, ''); // add blank string to fire loop correctly
+.fontListChars() { font-family: @fontListCharsName; };
+
+
+.signLists() {    
+    > li {
+        display: table;
+
+        &:before {
+            .fontListChars();
+            line-height: 1;
+            position: relative;
+            display: table-cell;
+            color: @base-li-attr;
+        }
+    }
+
+    &.inline {
+        > li {
+            display: inline-block;
+            @padd-right: @li-attr-size * 3;
+            padding-right: ~'@{padd-right}em';
+
+            &:last-child {
+                .padd-right();
+            }
+        }
+    }
+}
+
+.bullet-list() {
+    .signLists();
+    @topSpace: round(-(1 - @li-attr-size) / 2, 3);
+
+    > li {
+        &:before {
+            content: '\ea01'; // dot
+            font-size: ~'@{li-attr-size}em';
+            top: ~'@{topSpace}em';
+            padding-right: ~'@{li-attr-space-right}em';
+        }
+    }
+}
+
+.bullet-sublist() {
+    .signLists();
+    @topSpace: round(-(1 - @li-attr-size) / 2, 3);
+
+    > li {
+        &:before {
+            content: '\ea02'; // subdot
+            font-size: ~'@{li-attr-size}em';
+            top: ~'@{topSpace}em';
+            padding-right: ~'@{li-attr-space-right}em';
+        }
+    }
+}
+
+.tick-list() {
+    .signLists();
+    @topSpace: round(-(1 - @li-attr-tick-size) / 2, 3);
+
+    > li {
+        &:before {
+            content: '\ea03'; // tick
+            font-size: ~'@{li-attr-tick-size}em';
+            top: ~'@{topSpace}em';
+            padding-right: ~'@{li-attr-tick-space-right}em';
+        }
+    }
+}
+
+
+.countLists() {
+    > li {
+        display: table;
+
+        &:before {
+            display: table-cell;
+            color: @base-li-attr;
+            padding-right: .36em;
+        }
+    }
+}
+
+.count-list() {
+    .countLists();
+    counter-reset: item;
+
+    > li {
+        &:before {
+            content: counters(item,".") '. ';
+            counter-increment: item;
+        }
+    }
+}
+
+.alpha-list() {
+    .countLists();
+    counter-reset: alpha-item;
+
+    > li {
+        &:before {
+            content: counter(alpha-item, lower-alpha) '. ';
+            counter-increment: alpha-item;
+        }
+    }
+}
+
+.roman-list() {
+    .countLists();
+    counter-reset: roman-item;
+
+    > li {
+        &:before {
+            content: counter(roman-item, upper-roman) '. ';
+            counter-increment: roman-item;
+        }
+    }
+}

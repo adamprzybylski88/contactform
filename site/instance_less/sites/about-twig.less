@@ -1,0 +1,153 @@
+#public-relations-part {
+
+	.signListsWidthIcons() {    
+		> li {
+			display: table;
+
+			&:before {
+				display: none;
+			}
+	
+			> * {
+				display: table-cell;
+			}
+		}
+	}
+
+	// settings
+	@li-attr-circletick-space-right:	.7;
+	@li-attr-circletick-size:			1.6;
+
+	.list-with-icons() {
+		.signListsWidthIcons();
+		@size: @li-attr-circletick-space-right + @li-attr-circletick-size;
+		@topSpace: round(-(1 - @li-attr-circletick-size + @li-attr-circletick-space-right) / 2, 3);
+
+		> li {
+			.images {
+				top: ~'@{topSpace}em';
+				width: ~'@{size}em';
+				padding-right: ~'@{li-attr-circletick-space-right}em';
+
+				img {
+					margin-left: auto !important;
+					margin-right: auto !important;
+					.marg-bottom();
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	ul.list_w_icons {
+		.list-with-icons();
+	}
+}
+
+#our-offices-part {
+	.content {
+		img {
+			.dims(52,37);
+			.marg-bottom(5);
+		}
+
+		h4 {
+			.font-size(12);
+			.uppercase;
+			.font(500);
+			.marg-bottom(10);
+			color: @pp-metal-gray;
+		}
+
+		p {
+			.font-size(18);
+			color: @white;
+		}
+	}
+}
+
+#media_about-us {
+	position: relative;
+
+	.box {
+		.padd(60,40,120,40);
+		.text-left;
+
+		img,
+		h3 {
+			.to-left;
+		}
+
+		img {
+			.height(40);
+			.marg-bottom(35);
+		}
+
+		h3 {
+			.marg-bottom(45);
+		}
+
+		.btn {
+			position: absolute;
+			.bottom(40);
+		}
+	}
+}
+
+#team_about-us {
+	[class*='tx-'] {
+		.text-center;
+
+		span.img_portraits {
+			position: relative;
+			display: block;
+			.marg-auto(0,20);
+			.dims(230,230);
+			.border-radius(200px);
+			.marg-bottom(40);
+			.background-size(cover);
+			background-repeat: no-repeat;
+			background-position: 0 0;
+
+			// background-color: @pp-blue_photo-filter;
+			// background-blend-mode: luminosity;
+			.transition(all .2s);
+
+			// &:hover {
+			// 	background-color: @transparent;
+			// }
+			@media screen and (max-width: @large) {
+				.dims(200,200);
+			}
+
+			@media screen and (max-width: @mob) {
+				.dims(200,200);
+			}
+
+			@media screen and (max-width: @small) {
+				.dims(140,140);
+			}
+		}
+
+		.content>img.img_portraits {
+			width: 100%;
+			height: 100%;
+			border-radius: 100%;
+			display: block;
+		}
+
+		p {
+			.font-size(18);
+
+			span {
+				display: block;
+				color: @pp-metal-gray;
+				.uppercase;
+				.font-size(14);
+				.font(500);
+				letter-spacing: 1.4px;
+				.marg-top(10);
+			}
+		}
+	}
+}

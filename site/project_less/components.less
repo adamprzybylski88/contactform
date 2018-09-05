@@ -1,0 +1,108 @@
+.bg_circles_box {
+    overflow: hidden;
+    // count
+    @pos: -660;
+    @pos-cont-space: -700;
+    @pos-cont-space_md: -680;
+    @pos-cont-space_sm: -800;
+    @pos_mob: -720;
+
+    img.circles_left,
+    img.circles_right {
+        position: absolute;
+        max-width: none;
+        .background-size(cover);
+        background-repeat: no-repeat;
+        // .top(45);
+        .top(0);
+        .height(390);
+        .width(787);
+    }
+
+    img.circles_left {
+        .left(@pos);
+    }
+
+    img.circles_right {
+        .right(@pos);
+    }
+    @media screen and (max-width: (at(@devices, mob) * 1px)) {
+        img.circles_left {
+            .left(@pos_mob);
+        }
+
+        img.circles_right {
+            .right(@pos_mob);
+        }
+    }
+
+    &.cont-space {
+        img.circles_left {
+            .left(@pos-cont-space);
+        }
+
+        img.circles_right {
+            .right(@pos-cont-space);
+        }
+        @media screen and (max-width: (at(@devices, md) * 1px)) {
+            img.circles_left {
+                .left(@pos-cont-space_md);
+            }
+
+            img.circles_right {
+                .right(@pos-cont-space_md);
+            }
+        }
+        @media screen and (max-width: (at(@devices, sm) * 1px)) {
+            img.circles_left {
+                .left(@pos-cont-space_sm);
+            }
+
+            img.circles_right {
+                .right(@pos-cont-space_sm);
+            }
+        }
+    }
+}
+
+.cta {
+    > .container {
+        .padd-top(60);
+    }
+
+    &.bg_circles_box {
+        // count
+        @pos: -400;
+        @pos_sm: -460;
+
+        img.circles_left,
+        img.circles_right {
+            top: 50%;
+            .marg-top(-136);
+            .height(272);
+            .width(549);
+        }
+
+        img.circles_left {
+            .left(@pos);
+        }
+
+        img.circles_right {
+            .right(@pos);
+        }
+        @media screen and (min-width: @mob) {
+            > .container {
+                .min-height(265);
+            }
+        }
+        @media screen and (max-width: @mob) {
+            img.circles_left {
+                .left(@pos_sm);
+            }
+
+            img.circles_right {
+                .right(@pos_sm);
+            }
+        }
+    }
+}
