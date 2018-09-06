@@ -1,10 +1,20 @@
-.window_height {
+#cf_wrapper {
     height: 100vh;
+    min-height: 100%;
+
+    > [class*='turbo'] {
+        height: 100vh;
+    }
 }
 
 form {
     .padd-bottom(30);
 
+    .form-part {
+        position: relative;
+    }
+
+    .form-part > input,
     input[type*='email'],
     input[type*='tel'],
     input[type*='text'],
@@ -13,7 +23,7 @@ form {
         width: 100%;
         .font-size(20);
         .marg-auto();
-        .padd(25,25,5);
+        .padd(35,25,5);
         border-bottom: 1px solid @gray4a;
         .placeholder-color(@gray80);
         
@@ -30,15 +40,35 @@ form {
     }
 
     .submit_part {
-        .padd-top(30);
+        .padd-top(45);
     }
 
     p.err_msg {
+        position: absolute;
+        .font-size(12);
+        color: @red;
+        top: 100%;
+        z-index: 50;
         display: none;
+
+        &.active {
+            display: block;
+        }
     }
 }
 
 #success_message,
 #err_message {
     display: none;
+
+    &.active {
+        display: block;
+    }
+}
+
+#success_message {
+    color: @green;
+}
+#err_message {
+    color: @red;
 }

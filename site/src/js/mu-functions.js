@@ -1,31 +1,9 @@
-const isNum = (val) => {
-	return /^\d+$/.test(val);
-} 
-
-class arrayActions {
-	constructor(arr) {
-		this.arr = arr
-	}
-
-	pushUniqueObj(elem) {
-		let thisLen = this.arr.length,
-			notExist = true;
-
-		if (thisLen === 0) {
-			this.arr.push(elem)
-		} else {
-			for (let i = 0; i < thisLen; i++) { 
-				if ( JSON.stringify( this.arr[i] ) === JSON.stringify( elem ) ) {
-					notExist = false
-				}
-			}
-
-			if (notExist) this.arr.push(elem)
-		}
-
-		return this.arr
-	}
+const isTelNum = (val) => {
+	return /\s\+?\d+$/.test(val) || /^\+?\d+$/.test(val)
 }
 
+const isEmail = (val) => {
+	return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(val)
+}
 
-export { isNum, arrayActions }
+export { isTelNum, isEmail }

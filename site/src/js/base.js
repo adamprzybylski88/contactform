@@ -1,4 +1,4 @@
-import { isNum, arrayActions } from './mu-functions.js';
+import { isTelNum, isEmail } from './mu-functions.js';
 
 
 const contactForm = document.getElementById('contact_form');
@@ -20,94 +20,94 @@ class formValidate {
     }
 
     email() {
-        // 
+        return isEmail(this.val) // true || false
     }
 
     tel() {
-        return isNum(this.val)
+        return isTelNum(this.val) // true || false
     }
 
-    textArea() {
-        // if this.val.replace(/\s+/g, '').length === 0 this field is required
-        // if this.val.length <= 300 max 
+    message() {
+        if (
+                this.val.replace(/\s+/g, '').length === 0
+            ||  this.val.length > 300
+        ) {
+            return false
+        }
+        return true
     }
 }
 
 const validateInputs = () => {
     let validations = {
-        'name': '',
-        'email': '',
-        'tel': '',
-        'message': ''
+        'name': false,
+        'email': false,
+        'tel': false,
+        'message': false
     };
 
-    // detect if inputs are correct
     for (let i = 0; i < _inputLen; i++) {
 
         let validationsLen = validations.length;
 
         switch (_input[i].id) {
             case 'input_name':
-                if (new formValidate(_input[i]).name()) {
-                    validations.name = {
-                        'elem': _input[i], 
-                        'pass': true,
-                        'message': false
-                    }
-                } else {
-                    validations.name = {
-                        'elem': _input[i], 
-                        'pass': false,
-                        'message': 1
-                    }
-                }
+                if (new formValidate(_input[i]).name())
+                    validations.name = true
             break;
 
             case 'input_email':
-                // str.replace(/\s+/g, '');
-                // str.split('').join('');
+                if (new formValidate(_input[i]).email())
+                    validations.email = true
             break;
 
             case 'input_tel':
-                if (new formValidate(_input[i]).tel()) {
-                    validations.tel = {
-                        'elem': _input[i], 
-                        'pass': true,
-                        'message': false
-                    }
-                } else {
-                    validations.tel = {
-                        'elem': _input[i], 
-                        'pass': false,
-                        'message': 1
-                    }
-                }
+                if (new formValidate(_input[i]).tel())
+                    validations.tel = true
             break;
 
             case 'input_message':
+                if (new formValidate(_input[i]).message())
+                    validations.message = true
             break;
 
             default: 
-            console.log('default', _input[i])
+            return
         }
     }
 
-    console.log(validations)
+    let success = true;
 
-    // if all inputs correct
-    // return 'success'
-    // else
-    // return 'err'
+    for (var k in validations) {
+		if (validations.hasOwnProperty(k)) {
+            if (!validations[k]) {
+                success = false
+                document.getElementById(`err_input_${k}`).classList.add('active');
+            } else {
+                document.getElementById(`err_input_${k}`).classList.remove('active');
+            }
+        }
+    }
+
+    return success // true || false
 }
 
 contactForm.addEventListener('input', validateInputs)
+
 contactForm.onsubmit = (e) => {
     e.preventDefault()
 
-    if ( validateInputs() === 'success') {
-        // validation correct display wiadomosc zostala wyslana
-        // wyczyscic blędy i pola
+    let success = document.getElementById('success_message'),
+        error = document.getElementById('err_message');
+
+    if ( validateInputs() ) {
+        success.classList.add('active');
+        error.classList.remove('active');
     } else {
-        // validation err display 
+
+        // wyswietl błędy przy polach
+
+        success.classList.remove('active');
+        error.classList.add('active');
     }
 }

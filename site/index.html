@@ -10,26 +10,32 @@
 
 <body>
 
-	<div class="container">
-		<div class="turbobox td_mid td_center window_height">
+	<div id="cf_wrapper" class="container">
+		<div class="turbobox td_mid td_center">
 			<div class="tx-10 tx-sm-12">
 
-				<form id="contact_form" class="turbobox td_stretch" onsubmit="return false">
+				<form id="contact_form" class="turbobox td_stretch" onsubmit="return false" novalidate>
 
 					<div class="tx-6 tx-mob-12">
-						<input id="input_name" placeholder="Imię i Nazwisko" type="text" size="30" />
-						<p class="err_msg" id="err_input_name"></p>
+						<div class="form-part">
+							<input id="input_name" placeholder="Imię i Nazwisko" type="text" size="30" />
+							<p class="err_msg" id="err_input_name">Pole posiada limit znaków, max 30</p>
+						</div>
 			
-						<input id="input_email" placeholder="Email" type="email"  req="true" />
-						<p class="err_msg" id="err_input_email"></p>
+						<div class="form-part">
+							<input id="input_email" placeholder="Email *" type="email" />
+							<p class="err_msg" id="err_input_email">Pole wymanage, proszę podać poprawny adres email</p>
+						</div>
 
-						<input id="input_tel" placeholder="Numer telefonu" type="tel"  req="true" />
-						<p class="err_msg" id="err_input_tel"></p>
+						<div class="form-part">
+							<input id="input_tel" placeholder="Numer telefonu *" type="tel" />
+							<p class="err_msg" id="err_input_tel">Pole wymagane, musi zawierać tylko cyfry i opcjonalnie +</p>
+						</div>
 					</div>
 		
 					<div class="tx-6 tx-mob-12">
-						<textarea id="input_message" placeholder="Wiadomość" type="text" size="300" req="true"></textarea>
-						<p class="err_msg" id="err_input_message"></p>
+						<textarea id="input_message" placeholder="Wiadomość *" type="text" size="300"></textarea>
+						<p class="err_msg" id="err_input_message">Pole wymagane, posiada limit znaków, max 300</p>
 					</div>
 
 					<div class="tx-12 submit_part">
@@ -39,7 +45,7 @@
 				</form>
 
 				<div class="content center">
-					<p id="success_message">Twoja wiadomość została wysłana</p>
+					<p id="success_message">Dziękujemy, twoja wiadomość została wysłana</p>
 					<p id="err_message">Jedno bądź więcej pól zawiera błędy</p>
 				</div>
 
