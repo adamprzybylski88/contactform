@@ -1,6 +1,10 @@
+.window_height {
+    height: 100vh;
+}
+
 form {
     .padd-bottom(30);
-    
+
     input[type*='email'],
     input[type*='tel'],
     input[type*='text'],
@@ -24,4 +28,17 @@ form {
     textarea {
         height: 100%;
     }
+
+    .submit_part {
+        .padd-top(30);
+    }
+
+    p.err_msg {
+        display: none;
+    }
+}
+
+#success_message,
+#err_message {
+    display: none;
 }

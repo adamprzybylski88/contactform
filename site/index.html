@@ -11,28 +11,28 @@
 <body>
 
 	<div class="container">
-		<div class="turbobox td_mid td_center">
+		<div class="turbobox td_mid td_center window_height">
 			<div class="tx-10 tx-sm-12">
 
 				<form id="contact_form" class="turbobox td_stretch" onsubmit="return false">
 
 					<div class="tx-6 tx-mob-12">
-						<!-- <label for="input_name">Imię i Nazwisko</label> -->
 						<input id="input_name" placeholder="Imię i Nazwisko" type="text" size="30" />
+						<p class="err_msg" id="err_input_name"></p>
 			
-						<!-- <label for="input_email">Email<span>*</span></label> -->
-						<input id="input_email" placeholder="Email" type="email" />
+						<input id="input_email" placeholder="Email" type="email"  req="true" />
+						<p class="err_msg" id="err_input_email"></p>
 
-						<!-- <label for="input_phone">Telefon<span>*</span></label> -->
-						<input id="input_phone" placeholder="Numer telefonu" type="tel" />
+						<input id="input_tel" placeholder="Numer telefonu" type="tel"  req="true" />
+						<p class="err_msg" id="err_input_tel"></p>
 					</div>
 		
 					<div class="tx-6 tx-mob-12">
-						<!-- <label for="input_message">Wiadomość<span>*</span></label> -->
-						<textarea id="input_message" placeholder="Wiadomość" type="text" size="300"></textarea>
+						<textarea id="input_message" placeholder="Wiadomość" type="text" size="300" req="true"></textarea>
+						<p class="err_msg" id="err_input_message"></p>
 					</div>
 
-					<div class="tx-12">
+					<div class="tx-12 submit_part">
 						<input class="btn" type="submit" value="Wyślij">
 					</div>
 
