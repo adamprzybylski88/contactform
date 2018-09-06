@@ -14,7 +14,6 @@ form {
         position: relative;
     }
 
-    .form-part > input,
     input[type*='email'],
     input[type*='tel'],
     input[type*='text'],
@@ -33,6 +32,9 @@ form {
             .placeholder-color(@black);
         }
 
+        // &:-webkit-autofill {
+        //     background-color: @ba-light-green !important;
+        // }
     }
 
     textarea {

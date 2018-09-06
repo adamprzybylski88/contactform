@@ -6,6 +6,9 @@ const contactForm = document.getElementById('contact_form');
 let _input = contactForm.querySelectorAll('[type="text"], [type="email"], [type="tel"]'),
     _inputLen = _input.length;
 
+let inputErrors = contactForm.getElementsByClassName('err_msg'),
+    ieLen = inputErrors.length;
+
 class formValidate {
     constructor(elem) {
         this.elem = elem
@@ -80,16 +83,19 @@ const validateInputs = () => {
 
     for (var k in validations) {
 		if (validations.hasOwnProperty(k)) {
-            if (!validations[k]) {
-                success = false
-                document.getElementById(`err_input_${k}`).classList.add('active');
-            } else {
+            if (validations[k]) {
                 document.getElementById(`err_input_${k}`).classList.remove('active');
+            } else {
+                success = false
+                // adding errors to inputs on submit
             }
         }
     }
 
-    return success // true || false
+    return {
+        'state': success, // true || false
+        'list': validations 
+    } 
 }
 
 contactForm.addEventListener('input', validateInputs)
@@ -100,12 +106,28 @@ contactForm.onsubmit = (e) => {
     let success = document.getElementById('success_message'),
         error = document.getElementById('err_message');
 
-    if ( validateInputs() ) {
+    let state = validateInputs().state,
+        validations = validateInputs().list;
+
+    if ( state ) {
+
+        // clear form inputs value
+        for (let i = 0; i < _inputLen; i++) {
+            _input[i].value = '';
+        }
+
         success.classList.add('active');
         error.classList.remove('active');
     } else {
 
-        // wyswietl błędy przy polach
+        // display errors at inputs
+        for (var k in validations) {
+            if (validations.hasOwnProperty(k)) {
+                if (!validations[k]) {
+                    document.getElementById(`err_input_${k}`).classList.add('active');
+                }
+            }
+        }
 
         success.classList.remove('active');
         error.classList.add('active');
