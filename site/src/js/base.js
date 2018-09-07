@@ -111,7 +111,12 @@ contactForm.onsubmit = (e) => {
 
     if ( state ) {
 
-        // clear form inputs value
+        // new XMLHttpRequest()
+        // on xhr.status === 200
+        // clear form inputs etc
+        // else
+        // display connection error
+
         for (let i = 0; i < _inputLen; i++) {
             _input[i].value = '';
         }

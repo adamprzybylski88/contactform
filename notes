@@ -1,5 +1,0 @@
-WATCH
-node watch cf or contact_form
-
-WATCH && localhost
-node watch cf run-dev (starts watch and localhost on http://localhost:8080), app is on http://localhost:8080/index.html
